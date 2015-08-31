@@ -4,6 +4,7 @@ using System.Collections;
 public class OrganismObject : MonoBehaviour {
 
 	int myIndex;
+
 	public int MyIndex 
 	{
 		get { return myIndex; }

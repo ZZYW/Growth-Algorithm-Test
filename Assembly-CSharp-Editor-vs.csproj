@@ -46,15 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\OVR\Editor\OVRBuild.cs" />
-     <Compile Include="Assets\OVR\Editor\OVRCameraControllerEditor.cs" />
-     <Compile Include="Assets\OVR\Editor\OVRDeviceEditor.cs" />
-     <Compile Include="Assets\OVR\Editor\OVREditorGUIUtility.cs" />
-     <Compile Include="Assets\OVR\Editor\OVRPlayerControllerEditor.cs" />
-     <Compile Include="Assets\OVR\Editor\OVRPrefabs.cs" />
-     <None Include="Assets\OVR\OVRImageEffects\OVRLensCorrection_CA.shader" />
-     <None Include="Assets\OVR\OVRImageEffects\OVRLensCorrection.shader" />
-     <None Include="Assets\OVR\Shaders\OVRGUIShader.shader" />
+     <Compile Include="Assets\Editor\BranchBuilderEditor.cs" />
+     <Compile Include="Assets\Editor\ObjectBuilderEditor.cs" />
      <None Include="Assets\Plugins\donotdelete.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.5/UnityEngine.UI.dll</HintPath>
@@ -65,6 +58,10 @@
  <Reference Include="UnityEditor.Graphs">
  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-vs.csproj">
+      <Project>{6741B820-CBF8-2E3E-C708-B3EF842304C5}</Project>      <Name>Assembly-CSharp-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
