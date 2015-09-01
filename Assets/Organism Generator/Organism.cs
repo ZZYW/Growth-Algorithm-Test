@@ -7,7 +7,7 @@ public class Organism : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		addBranch(new Vector3(0,0,0), "Root");
+		addBranch(new Vector3(0,0,0), "Sprout");
 	}
 	
 	// Update is called once per frame

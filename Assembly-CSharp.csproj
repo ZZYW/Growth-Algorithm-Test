@@ -46,9 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Admin.cs" />
-     <Compile Include="Assets\Human.cs" />
-     <Compile Include="Assets\Male.cs" />
      <Compile Include="Assets\Organism Generator\Organism.cs" />
      <Compile Include="Assets\Organism Generator\OrganismBranchCluster.cs" />
      <Compile Include="Assets\Organism Generator\OrganismBranchRoot.cs" />

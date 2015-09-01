@@ -40,7 +40,6 @@ public class OrganismBranchRoot : MonoBehaviour
 	
 	IEnumerator WaitAndGrow ()
 	{
-//		while (true) {
 		for(int i=0;i<10;i++){
 			addObject ();
 			yield return new WaitForSeconds (growingTimeGap);
@@ -49,7 +48,6 @@ public class OrganismBranchRoot : MonoBehaviour
 
 	public void addObject ()
 	{
-
 		Vector3 previousObjectPos = basePosition; //default pos is branch's base position
 
 		if(objectsStr.Count>0){
@@ -72,10 +70,10 @@ public class OrganismBranchRoot : MonoBehaviour
 			newObject.transform.position = previousObjectPos + increment;
 		}
 
-		newObject.AddComponent<Rigidbody>();
+//		newObject.AddComponent<Rigidbody>();
 		newObject.AddComponent<StickyStickStuckPackage.StickyStickStuck>();
 		newObject.AddComponent<OrganismObject>();
-		newObject.GetComponent<Rigidbody>().mass = 10;
+//		newObject.GetComponent<Rigidbody>().mass = 3.0f;
 		newObject.GetComponent<OrganismObject> ().MyIndex = objectsStr.Count;
 		newObject.transform.parent = gameObject.transform;
 		newObject.name = "Object" + objectsStr.Count;
