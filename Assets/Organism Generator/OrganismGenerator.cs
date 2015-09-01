@@ -9,8 +9,6 @@ public class OrganismGenerator : MonoBehaviour {
 		GameObject newOrganism = new GameObject();
 		newOrganism.AddComponent<Organism>();
 		newOrganism.name = "Organism";
-
-
 	}
 	
 	// Update is called once per frame

@@ -2,16 +2,22 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(OrganismBranch))]
+[CustomEditor(typeof(OrganismBranchRoot))]
 public class ObjectBuilderEditor : Editor {
 	public override void OnInspectorGUI(){
 		DrawDefaultInspector();
-		OrganismBranch generateObjectScript = (OrganismBranch)target;
+		OrganismBranchRoot generateObjectScript = (OrganismBranchRoot)target;
 		if(GUILayout.Button("Build An Object")){
 			generateObjectScript.addObject();
 		}
+		if(GUILayout.Button("Start Grow")){
+			generateObjectScript.StartCoroutine("WaitAndGrow");
+		}
 
-
+		if(GUILayout.Button("Stop Grow")){
+			generateObjectScript.StopCoroutine("WaitAndGrow");
+		}
+		EditorGUILayout.LabelField("Has Objects:",generateObjectScript.objectsStr.Count.ToString());
 	}
 
 }

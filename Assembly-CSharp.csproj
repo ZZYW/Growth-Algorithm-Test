@@ -46,14 +46,24 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Admin.cs" />
+     <Compile Include="Assets\Human.cs" />
+     <Compile Include="Assets\Male.cs" />
      <Compile Include="Assets\Organism Generator\Organism.cs" />
-     <Compile Include="Assets\Organism Generator\OrganismBranch.cs" />
+     <Compile Include="Assets\Organism Generator\OrganismBranchCluster.cs" />
+     <Compile Include="Assets\Organism Generator\OrganismBranchRoot.cs" />
+     <Compile Include="Assets\Organism Generator\OrganismBranchSprout.cs" />
      <Compile Include="Assets\Organism Generator\OrganismGenerator.cs" />
      <Compile Include="Assets\Organism Generator\OrganismObject.cs" />
+     <None Include="Assets\Plugins\StickyStickStuck Package\ReadMe.txt" />
      <None Include="Assets\Plugins\donotdelete.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.5/UnityEngine.UI.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{FF1CB1F2-5339-1FB6-D457-FE45F4D139F2}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

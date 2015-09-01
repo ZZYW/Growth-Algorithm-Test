@@ -1,12 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Editor/BranchBuilderEditor.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Organism Generator/OrganismBranchRoot.cs">
     <Files>
-      <File FileName="Assets/Organism Generator/OrganismGenerator.cs" Line="12" Column="1" />
-      <File FileName="Assets/Organism Generator/Organism.cs" Line="24" Column="2" />
-      <File FileName="Assets/Organism Generator/OrganismBranch.cs" Line="27" Column="15" />
-      <File FileName="Assets/Organism Generator/OrganismObject.cs" Line="7" Column="2" />
-      <File FileName="Assets/Editor/BranchBuilderEditor.cs" Line="8" Column="2" />
+      <File FileName="Assets/Organism Generator/OrganismGenerator.cs" Line="13" Column="2" />
+      <File FileName="Assets/Organism Generator/Organism.cs" Line="10" Column="41" />
+      <File FileName="Assets/Organism Generator/OrganismObject.cs" Line="13" Column="2" />
+      <File FileName="Assets/Editor/BranchBuilderEditor.cs" Line="13" Column="1" />
+      <File FileName="Assets/Plugins/Scripts/StickyStickStuck.cs" Line="164" Column="46" />
+      <File FileName="Assets/Organism Generator/OrganismBranchRoot.cs" Line="62" Column="53" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

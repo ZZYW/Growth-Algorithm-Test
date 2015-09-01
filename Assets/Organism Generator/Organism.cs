@@ -4,27 +4,41 @@ using System.Collections;
 public class Organism : MonoBehaviour {
 	
 	public bool growing = false;
-
-	public bool add_a_branch = false;
-
-
+	
 	// Use this for initialization
 	void Start () {
-		addBranch(new Vector3(0,0,0));
+		addBranch(new Vector3(0,0,0), "Root");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 	}
-
-
-	public void addBranch(Vector3 basePosition){
+	
+	public void addBranch(Vector3 basePosition, string type){
 		GameObject newBranch = new GameObject();
-		newBranch.name = "Branch";
+		newBranch.name = "Branch" + " " + type;
 		newBranch.transform.position = basePosition;
-		newBranch.AddComponent<OrganismBranch>();
+
+		switch (type)
+		{
+		case "Cluster":
+			newBranch.AddComponent<OrganismBranchCluster>();
+			break;
+		case "Root":
+			newBranch.AddComponent<OrganismBranchRoot>();
+			break;
+		case "Sprout":
+			newBranch.AddComponent<OrganismBranchSprout>();
+			break;
+		default:
+			Debug.LogError("Didn't find any matched branch type.");
+			break;
+		}
+
 		newBranch.transform.parent = gameObject.transform;
 	}
+
+
 
 }
