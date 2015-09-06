@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{FC71696B-86C9-BBE7-4961-4B983336390C}</ProjectGuid>
+	<ProjectGuid>{E96ECBD8-B570-479F-BD9E-2D9CBBEB85A3}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -46,8 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Editor\BranchBuilderEditor.cs" />
-     <Compile Include="Assets\Editor\ObjectBuilderEditor.cs" />
+     <Compile Include="Assets\Editor\BranchEditor.cs" />
+     <Compile Include="Assets\Editor\ObjectEditor.cs" />
+     <Compile Include="Assets\Editor\OrganismEditor.cs" />
      <None Include="Assets\Plugins\StickyStickStuck Package\ReadMe.txt" />
      <None Include="Assets\Plugins\donotdelete.txt" />
  <Reference Include="UnityEngine.UI">
@@ -62,9 +63,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{FF1CB1F2-5339-1FB6-D457-FE45F4D139F2}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{2CD5FE32-8DBE-A350-5E6C-DBB440ED1C75}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{79D728C8-BF5A-691C-2184-58ADFB0FB431}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{6741B820-CBF8-2E3E-C708-B3EF842304C5}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+      <Project>{D11084E1-0141-5F5D-9F85-007E609350B2}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

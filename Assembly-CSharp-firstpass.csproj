@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{FF1CB1F2-5339-1FB6-D457-FE45F4D139F2}</ProjectGuid>
+	<ProjectGuid>{2CD5FE32-8DBE-A350-5E6C-DBB440ED1C75}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -46,15 +46,22 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Plugins\Scripts\CamLookAtObject.cs" />
-     <Compile Include="Assets\Plugins\Scripts\DrawRope.cs" />
-     <Compile Include="Assets\Plugins\Scripts\MoveStickyObject.cs" />
-     <Compile Include="Assets\Plugins\Scripts\RotateBowControls.cs" />
-     <Compile Include="Assets\Plugins\Scripts\ShootBow.cs" />
-     <Compile Include="Assets\Plugins\Scripts\ShowText.cs" />
-     <Compile Include="Assets\Plugins\Scripts\StickmanPlayButton.cs" />
-     <Compile Include="Assets\Plugins\Scripts\StickyStickStuck.cs" />
-     <Compile Include="Assets\Plugins\Scripts\StickyStickStuckVisualizer.cs" />
+     <Compile Include="Assets\Plugins\Organism Generator\Organism.cs" />
+     <Compile Include="Assets\Plugins\Organism Generator\OrganismBranchCluster.cs" />
+     <Compile Include="Assets\Plugins\Organism Generator\OrganismBranchRoot.cs" />
+     <Compile Include="Assets\Plugins\Organism Generator\OrganismBranchSprout.cs" />
+     <Compile Include="Assets\Plugins\Organism Generator\OrganismGenerator.cs" />
+     <Compile Include="Assets\Plugins\Organism Generator\OrganismObject.cs" />
+     <Compile Include="Assets\Plugins\StickyStickStuck Package\Scripts\CamLookAtObject.cs" />
+     <Compile Include="Assets\Plugins\StickyStickStuck Package\Scripts\DrawRope.cs" />
+     <Compile Include="Assets\Plugins\StickyStickStuck Package\Scripts\MoveStickyObject.cs" />
+     <Compile Include="Assets\Plugins\StickyStickStuck Package\Scripts\RotateBowControls.cs" />
+     <Compile Include="Assets\Plugins\StickyStickStuck Package\Scripts\ShootBow.cs" />
+     <Compile Include="Assets\Plugins\StickyStickStuck Package\Scripts\ShowText.cs" />
+     <Compile Include="Assets\Plugins\StickyStickStuck Package\Scripts\StickmanPlayButton.cs" />
+     <Compile Include="Assets\Plugins\StickyStickStuck Package\Scripts\StickyStickStuck.cs" />
+     <Compile Include="Assets\Plugins\StickyStickStuck Package\Scripts\StickyStickStuckVisualizer.cs" />
+     <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
      <None Include="Assets\Plugins\StickyStickStuck Package\ReadMe.txt" />
      <None Include="Assets\Plugins\donotdelete.txt" />
  <Reference Include="UnityEngine.UI">
