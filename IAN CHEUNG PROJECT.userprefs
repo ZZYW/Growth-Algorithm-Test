@@ -1,17 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/Organism Generator/OrganismObject.cs">
     <Files>
-      <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/ThirdPersonController.js" Line="1" Column="1" />
-      <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/ThirdPersonCamera.js" Line="1" Column="1" />
-      <File FileName="Assets/Plugins/Organism Generator/OrganismGenerator.cs" Line="1" Column="1" />
-      <File FileName="Assets/Plugins/Organism Generator/Organism.cs" Line="1" Column="1" />
-      <File FileName="Assets/Plugins/Organism Generator/OrganismBranchSprout.cs" Line="69" Column="72" />
-      <File FileName="Assets/Plugins/Organism Generator/OrganismObject.cs" Line="10" Column="24" />
-      <File FileName="Assets/Plugins/Organism Generator/OrganismBranchRoot.cs" Line="62" Column="13" />
-      <File FileName="Assets/Plugins/Organism Generator/OrganismBranchCluster.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/Organism Generator/Organism.cs" Line="6" Column="42" />
+      <File FileName="Assets/Plugins/Organism Generator/OrganismBranchSprout.cs" Line="19" Column="3" />
+      <File FileName="Assets/Plugins/Organism Generator/OrganismObject.cs" Line="54" Column="24" />
       <File FileName="Assets/Editor/OrganismEditor.cs" Line="1" Column="1" />
-      <File FileName="Assets/Plugins/StickyStickStuck Package/Scripts/StickyStickStuck.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -2,18 +2,24 @@
 using System.Collections;
 
 public class Organism : MonoBehaviour {
-	
+
+	public float objectDropingDistance = 1.5f;
+
+
 	public bool growing = false;
 	public GameObject baseObject;
 
-	void Start () {
 
+	void Start () {
 		baseObject = (GameObject)Instantiate(Resources.Load("corgi_withcollider"));
 		baseObject.transform.position = gameObject.transform.position;
-		baseObject.transform.rotation = Quaternion.identity;
-		Rigidbody rigid = baseObject.AddComponent<Rigidbody>();
+		baseObject.transform.parent = gameObject.transform;
+		baseObject.name = "Base";
+		baseObject.AddComponent<StickyStickStuckPackage.StickyStickStuck> ();
+		Rigidbody rigid = baseObject.GetComponent<Rigidbody>();
 		rigid.isKinematic = true;
 		rigid.constraints = RigidbodyConstraints.FreezeAll;
+		baseObject.transform.rotation = Quaternion.identity;
 		addBranch(baseObject.transform.position, "Sprout");
 	}
 	

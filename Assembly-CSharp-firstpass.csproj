@@ -63,6 +63,7 @@
      <Compile Include="Assets\Plugins\StickyStickStuck Package\Scripts\StickyStickStuckVisualizer.cs" />
      <Compile Include="Assets\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
      <None Include="Assets\Plugins\StickyStickStuck Package\ReadMe.txt" />
+     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Plugins\donotdelete.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.5/UnityEngine.UI.dll</HintPath>

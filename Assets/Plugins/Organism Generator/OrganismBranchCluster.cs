@@ -88,7 +88,6 @@ public class OrganismBranchCluster : MonoBehaviour {
 		stickyStickStuck.stickProperties.fixedProperties.breakTorque = 30.0f;
 		//		newObject.GetComponent<Rigidbody>().mass = 0.1f;
 		newObject.AddComponent<OrganismObject>();
-		newObject.GetComponent<OrganismObject>().targetLocation = targetLocation;
 		newObject.GetComponent<OrganismObject>().myIndex = objectsData.Count;
 		
 		//		newObject.GetComponent<Rigidbody>().mass = 3.0f;

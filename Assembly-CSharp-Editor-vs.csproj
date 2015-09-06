@@ -50,6 +50,7 @@
      <Compile Include="Assets\Editor\ObjectEditor.cs" />
      <Compile Include="Assets\Editor\OrganismEditor.cs" />
      <None Include="Assets\Plugins\StickyStickStuck Package\ReadMe.txt" />
+     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Plugins\donotdelete.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>/Users/yang/Documents/IAN CHEUNG PROJECT/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
