@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class OrganismBranchSprout : MonoBehaviour
+public class OrganismBranch : MonoBehaviour
 {
 
 
@@ -59,19 +59,19 @@ public class OrganismBranchSprout : MonoBehaviour
 			previousObjectPos = objectsData [objectsData.Count - 1].myGameObject.GetComponent<MeshRenderer> ().bounds.center;
 		
 
-		Vector3 newPosition = previousObjectPos + Vector3.up * myParent.GetComponent<Organism> ().objectDropingDistance + Vector3.right/3;
+		Vector3 newPosition = previousObjectPos + Vector3.up * myParent.GetComponent<Organism> ().objectDropingDistance + Vector3.right / 3;
 
 		GameObject newObject = (GameObject)Instantiate (Resources.Load ("corgi_withcollider"), newPosition, Quaternion.identity);
 		StickyStickStuckPackage.StickyStickStuck newObjectSSS = newObject.AddComponent<StickyStickStuckPackage.StickyStickStuck> ();
 		Rigidbody newObjectRigidBody = newObject.GetComponent<Rigidbody> ();
 
+		//set it invisible before it actually sticks to anything
 		newObject.GetComponent<MeshRenderer> ().enabled = false;
 	
 		//Rigidbody parameters change
 		newObjectRigidBody.mass = 0.1f;
 		newObjectRigidBody.drag = 0.5f;
 		newObjectRigidBody.angularDrag = 0.0f;
-//		newObjectRigidBody.interpolation = RigidbodyInterpolation.Interpolate;
 		newObjectSSS.stickProperties.stickNonRigidbodys = false;
 		newObjectSSS.infectionProperties.affectInfected = true;
 		OrganismObject myOrgan = newObject.AddComponent<OrganismObject> ();

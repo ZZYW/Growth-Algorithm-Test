@@ -4,14 +4,13 @@ using System.Collections;
 public class Organism : MonoBehaviour {
 
 	public float objectDropingDistance = 1.5f;
-
-
-	public bool growing = false;
 	public GameObject baseObject;
+	public string modelName;
 
 
 	void Start () {
-		baseObject = (GameObject)Instantiate(Resources.Load("corgi_withcollider"));
+		modelName = "corgi_withcollider";
+		baseObject = (GameObject)Instantiate(Resources.Load(modelName));
 		baseObject.transform.position = gameObject.transform.position;
 		baseObject.transform.parent = gameObject.transform;
 		baseObject.name = "Base";
@@ -26,7 +25,6 @@ public class Organism : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update (){
-
 	} 
 
 	
@@ -44,7 +42,7 @@ public class Organism : MonoBehaviour {
 			newBranch.AddComponent<OrganismBranchRoot>();
 			break;
 		case "Sprout":
-			newBranch.AddComponent<OrganismBranchSprout>();
+			newBranch.AddComponent<OrganismBranch>();
 			break;
 		default:
 			Debug.LogError("Didn't find any matched branch type.");

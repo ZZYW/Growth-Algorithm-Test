@@ -47,9 +47,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Plugins\Organism Generator\Organism.cs" />
+     <Compile Include="Assets\Plugins\Organism Generator\OrganismBranch.cs" />
      <Compile Include="Assets\Plugins\Organism Generator\OrganismBranchCluster.cs" />
      <Compile Include="Assets\Plugins\Organism Generator\OrganismBranchRoot.cs" />
-     <Compile Include="Assets\Plugins\Organism Generator\OrganismBranchSprout.cs" />
      <Compile Include="Assets\Plugins\Organism Generator\OrganismGenerator.cs" />
      <Compile Include="Assets\Plugins\Organism Generator\OrganismObject.cs" />
      <Compile Include="Assets\Plugins\StickyStickStuck Package\Scripts\CamLookAtObject.cs" />

@@ -1,11 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/Organism Generator/OrganismObject.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/Organism Generator/Organism.cs">
     <Files>
-      <File FileName="Assets/Plugins/Organism Generator/Organism.cs" Line="6" Column="42" />
-      <File FileName="Assets/Plugins/Organism Generator/OrganismBranchSprout.cs" Line="19" Column="3" />
-      <File FileName="Assets/Plugins/Organism Generator/OrganismObject.cs" Line="54" Column="24" />
-      <File FileName="Assets/Editor/OrganismEditor.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/Organism Generator/Organism.cs" Line="44" Column="10" />
+      <File FileName="Assets/Plugins/Organism Generator/OrganismObject.cs" Line="17" Column="3" />
+      <File FileName="Assets/Editor/OrganismEditor.cs" Line="18" Column="3" />
+      <File FileName="Assets/Plugins/Organism Generator/OrganismBranchRoot.cs" Line="71" Column="137" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

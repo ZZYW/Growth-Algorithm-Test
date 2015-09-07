@@ -18,9 +18,9 @@ public class OrganismObject : MonoBehaviour
 		growingVelocity = new Vector3 (growingSpeed, growingSpeed, growingSpeed);
 		gameObject.transform.localScale = startScale;
 //		gameObject.transform.rotation = Random.rotation;
-//		float randomSize = Random.Range (0.6f, 1.4f);
-//		targetScale = new Vector3 (randomSize, randomSize, randomSize);
-		targetScale = Vector3.one;
+		float randomSize = Random.Range (0.8f, 1.2f);
+		targetScale = new Vector3 (randomSize, randomSize, randomSize);
+//		targetScale = Vector3.one;
 		parentType = gameObject.transform.parent.name; 
 	}
 	
@@ -49,7 +49,7 @@ public class OrganismObject : MonoBehaviour
 
 
 		if(growingCompleted && gameObject.GetComponent<FixedJoint>() == null){
-			OrganismBranchSprout parentScript = gameObject.transform.parent.GetComponent<OrganismBranchSprout>();
+			OrganismBranch parentScript = gameObject.transform.parent.GetComponent<OrganismBranch>();
 			parentScript.objectsData.RemoveAt(parentScript.objectsData.Count-1);
 			Destroy(gameObject);
 		}
