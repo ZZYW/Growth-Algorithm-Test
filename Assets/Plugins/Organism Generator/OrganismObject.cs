@@ -7,7 +7,7 @@ public class OrganismObject : MonoBehaviour
 	public int myIndex;
 	public bool growingCompleted = false;
 	Vector3 startScale = new Vector3 (0, 0, 0);
-	float growingSpeed = 0.2f;
+	float growingSpeed = 0.35f;
 	Vector3 growingVelocity;
 	Vector3 targetScale;
 	string parentType;
@@ -17,10 +17,7 @@ public class OrganismObject : MonoBehaviour
 	{
 		growingVelocity = new Vector3 (growingSpeed, growingSpeed, growingSpeed);
 		gameObject.transform.localScale = startScale;
-
-
-		gameObject.transform.rotation = Random.rotation;
-
+//		gameObject.transform.rotation = Random.rotation;
 //		float randomSize = Random.Range (0.6f, 1.4f);
 //		targetScale = new Vector3 (randomSize, randomSize, randomSize);
 		targetScale = Vector3.one;
@@ -45,11 +42,16 @@ public class OrganismObject : MonoBehaviour
 		}
 
 
-
 		//When The Object is All Set
 		if (growingCompleted && gameObject.GetComponent<FixedJoint> () != null) {
-//			gameObject.GetComponent<StickyStickStuckPackage.StickyStickStuck>().infectionProperties.affectInfected = false;
 			gameObject.GetComponent<Rigidbody> ().useGravity = false;
+		}
+
+
+		if(growingCompleted && gameObject.GetComponent<FixedJoint>() == null){
+			OrganismBranchSprout parentScript = gameObject.transform.parent.GetComponent<OrganismBranchSprout>();
+			parentScript.objectsData.RemoveAt(parentScript.objectsData.Count-1);
+			Destroy(gameObject);
 		}
 
 

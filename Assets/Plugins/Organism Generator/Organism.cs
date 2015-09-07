@@ -16,9 +16,10 @@ public class Organism : MonoBehaviour {
 		baseObject.transform.parent = gameObject.transform;
 		baseObject.name = "Base";
 		baseObject.AddComponent<StickyStickStuckPackage.StickyStickStuck> ();
+		baseObject.GetComponent<Renderer>().enabled = false;
 		Rigidbody rigid = baseObject.GetComponent<Rigidbody>();
 		rigid.isKinematic = true;
-		rigid.constraints = RigidbodyConstraints.FreezeAll;
+		rigid.constraints = RigidbodyConstraints.FreezeRotation;
 		baseObject.transform.rotation = Quaternion.identity;
 		addBranch(baseObject.transform.position, "Sprout");
 	}

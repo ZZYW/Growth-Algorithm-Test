@@ -4,8 +4,12 @@ using System.Collections.Generic;
 
 public class OrganismBranchSprout : MonoBehaviour
 {
+
+
+	bool branched = false;
+	public Vector3 displacement = Vector3.right / 5;
 	Vector3 basePosition;
-	public float growingTimeGap = 4.0f;
+	public float growingTimeGap = 5.0f;
 	public struct ObjectData
 	{
 		public GameObject myGameObject;
@@ -20,7 +24,7 @@ public class OrganismBranchSprout : MonoBehaviour
 
 	public List<ObjectData> objectsData;
 	Transform myParent;
-	
+
 	void Start ()
 	{
 		myParent = gameObject.transform.parent;
@@ -34,6 +38,11 @@ public class OrganismBranchSprout : MonoBehaviour
 	{
 		
 	}
+
+	public void stopGrow ()
+	{
+		StopCoroutine ("WaitAndGrow");
+	}
 	
 	IEnumerator WaitAndGrow ()
 	{
@@ -45,23 +54,24 @@ public class OrganismBranchSprout : MonoBehaviour
 	
 	public void addObject ()
 	{
-		Vector3 previousObjectPos = basePosition; //default pos is branch's base position
-
-		if (objectsData.Count > 0) {
+		Vector3 previousObjectPos = gameObject.transform.parent.GetComponent<Organism> ().baseObject.transform.position + Vector3.up; //default pos is branch's base position
+		if (objectsData.Count > 0)
 			previousObjectPos = objectsData [objectsData.Count - 1].myGameObject.GetComponent<MeshRenderer> ().bounds.center;
-		}
+		
 
-		GameObject newObject = (GameObject)Instantiate (Resources.Load ("corgi_withcollider"));
+		Vector3 newPosition = previousObjectPos + Vector3.up * myParent.GetComponent<Organism> ().objectDropingDistance + Vector3.right/3;
+
+		GameObject newObject = (GameObject)Instantiate (Resources.Load ("corgi_withcollider"), newPosition, Quaternion.identity);
 		StickyStickStuckPackage.StickyStickStuck newObjectSSS = newObject.AddComponent<StickyStickStuckPackage.StickyStickStuck> ();
 		Rigidbody newObjectRigidBody = newObject.GetComponent<Rigidbody> ();
-		newObject.transform.position = previousObjectPos + Vector3.up * myParent.GetComponent<Organism>().objectDropingDistance;
-		newObject.GetComponent<MeshRenderer>().enabled = false;
+
+		newObject.GetComponent<MeshRenderer> ().enabled = false;
 	
 		//Rigidbody parameters change
 		newObjectRigidBody.mass = 0.1f;
-		newObjectRigidBody.drag = 3.0f;
+		newObjectRigidBody.drag = 0.5f;
 		newObjectRigidBody.angularDrag = 0.0f;
-		newObjectRigidBody.interpolation = RigidbodyInterpolation.Interpolate;
+//		newObjectRigidBody.interpolation = RigidbodyInterpolation.Interpolate;
 		newObjectSSS.stickProperties.stickNonRigidbodys = false;
 		newObjectSSS.infectionProperties.affectInfected = true;
 		OrganismObject myOrgan = newObject.AddComponent<OrganismObject> ();
