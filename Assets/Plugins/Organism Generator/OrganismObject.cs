@@ -30,7 +30,7 @@ public class OrganismObject : MonoBehaviour
 		if (gameObject.GetComponent<FixedJoint> () != null) {
 			gameObject.GetComponent<MeshRenderer> ().enabled = true;
 		}
-
+	
 		//Growing Size
 		if (gameObject.transform.localScale.magnitude < targetScale.magnitude) {
 			Vector3 temp = gameObject.transform.localScale;
@@ -38,7 +38,9 @@ public class OrganismObject : MonoBehaviour
 			gameObject.transform.localScale = temp;
 		} else {
 			growingCompleted = true;
+			gameObject.GetComponent<StickyStickStuckPackage.StickyStickStuck>().infectionProperties.affectInfected = false;
 		}
+
 
 		//When The Object is All Set
 		if (growingCompleted && gameObject.GetComponent<FixedJoint> () != null) {
