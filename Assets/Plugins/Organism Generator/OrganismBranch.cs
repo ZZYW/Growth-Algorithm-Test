@@ -35,13 +35,11 @@ public class OrganismBranch : MonoBehaviour
 		StartCoroutine ("WaitAndGrow");
 
 		branchOutPosition = (int)Random.Range (0, branchLength);
-
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-
 	}
 
 	public void stopGrow ()
@@ -51,8 +49,8 @@ public class OrganismBranch : MonoBehaviour
 	
 	IEnumerator WaitAndGrow ()
 	{
-		while (objectsData.Count<branchLength-1) {
-			if (objectsData.Count == 0) {
+		while (objectsData.Count< 20) {
+			if (objectsData.Count == 0) { //If this is the first object in the branch
 				addObject ();
 			} else {
 				if (objectsData [objectsData.Count - 1].myGameObject.GetComponent<OrganismObject> ().growingCompleted || objectsData.Count == 0) {
@@ -67,54 +65,79 @@ public class OrganismBranch : MonoBehaviour
 	{
 		Organism parentScript = parent.GetComponent<Organism> ();
 
-		Vector3 previousObjectPos = parentScript.baseObject.transform.position + Vector3.up; //default pos is branch's base position
-		if (objectsData.Count > 0)
-//			previousObjectPos = objectsData [objectsData.Count - 1].myGameObject.GetComponent<MeshRenderer> ().bounds.center;
-			previousObjectPos = objectsData[objectsData.Count - 1].myGameObject.transform.position;
+		Vector3 previousObjectPos = parent.transform.position;// + Vector3.up;   //default pos is branch's base position
 
-		Vector3 newPosition = previousObjectPos + Vector3.up * parent.GetComponent<Organism> ().objectDropingDistance + direction;
-		GameObject newObject = (GameObject)Instantiate (Resources.Load ("officechair_collider"), newPosition, Quaternion.identity);
-		StickyStickStuckPackage.StickyStickStuck newObjectSSS = newObject.AddComponent<StickyStickStuckPackage.StickyStickStuck> ();
+		if (objectsData.Count > 0) {
+			previousObjectPos = objectsData [objectsData.Count - 1].myGameObject.transform.position;
+		}
+
+
+		Vector3 newPosition = previousObjectPos + direction;
+		GameObject newObject = (GameObject)Instantiate (Resources.Load ("corgi_withcollider"), previousObjectPos, Quaternion.identity);
+		newObject.name = "Object" + objectsData.Count;
+		newObject.transform.parent = gameObject.transform;
+		OrganismObject myOrgan = newObject.AddComponent<OrganismObject> ();
+		myOrgan.myIndex = objectsData.Count;
+		myOrgan.targetLocation = newPosition;
+
+		if(objectsData.Count > 0){
+			myOrgan.previousGameObject = objectsData [objectsData.Count - 1].myGameObject;
+		}else{
+			myOrgan.previousGameObject = parent.transform.FindChild("Base").transform.gameObject;
+		}
+
+
+
+		//INIT STATE
+//		StickyStickStuckPackage.StickyStickStuck newObjectSSS = newObject.AddComponent<StickyStickStuckPackage.StickyStickStuck> ();
 		Rigidbody newObjectRigidBody = newObject.GetComponent<Rigidbody> ();
 
 		//set it invisible before it actually sticks to anything
-		newObject.GetComponent<MeshRenderer> ().enabled = false;
+//		newObject.GetComponent<MeshRenderer> ().enabled = false;
 	
 		//Rigidbody parameters change
 		newObjectRigidBody.mass = 0.1f;
 		newObjectRigidBody.drag = 0.5f;
 		newObjectRigidBody.angularDrag = 0.0f;
-		newObjectSSS.stickProperties.stickNonRigidbodys = false;
-		newObjectSSS.infectionProperties.affectInfected = true;
-		OrganismObject myOrgan = newObject.AddComponent<OrganismObject> ();
-		myOrgan.myIndex = objectsData.Count;
-		newObject.name = "Object" + objectsData.Count;
-		newObject.transform.parent = gameObject.transform;
+		newObjectRigidBody.isKinematic = true;
+
+		Collider[] colliders = newObject.GetComponents<Collider>();
+
+
+		for (int i=0; i<colliders.Length; i++) {
+			colliders [i].isTrigger = true;
+
+		}
+
+//		newObjectSSS.stickProperties.stickNonRigidbodys = false;
+//		newObjectSSS.infectionProperties.affectInfected = true;
+
+
 		objectsData.Add (new ObjectData (objectsData.Count, newObject));
 
 
-		if (objectsData.Count == 4 && hasSubBranch) {
-			int newBornBranchID = parentScript.branches.Count - 1;
-
-			parentScript.addBranch (objectsData [objectsData.Count - 1].myGameObject.transform.position,
-			                       Vector3.right,
-			                       9,
-			                       2,
-			                        false
-			);
-		}
-
-
-		if (objectsData.Count == 7 && hasSubBranch) {
-			int newBornBranchID = parentScript.branches.Count - 1;
-			
-			parentScript.addBranch (objectsData [objectsData.Count - 1].myGameObject.transform.position,
-			                        Vector3.left,
-			                        7,
-			                        2,	
-			                       false);
-		}
-
+//		if (objectsData.Count == 4 && hasSubBranch) {
+//			int newBornBranchID = parentScript.branches.Count - 1;
+//
+//			parentScript.addBranch (objectsData [objectsData.Count - 1].myGameObject.transform.position,
+//			                       Vector3.right,
+//			                       9,
+//			                       2,
+//			                        false
+//			);
+//		}
+//
+//
+//		if (objectsData.Count == 7 && hasSubBranch) {
+//			int newBornBranchID = parentScript.branches.Count - 1;
+//			
+//			parentScript.addBranch (objectsData [objectsData.Count - 1].myGameObject.transform.position,
+//			                        Vector3.left,
+//			                        7,
+//			                        2,	
+//			                       false);
+//		}
+//
 
 
 	}

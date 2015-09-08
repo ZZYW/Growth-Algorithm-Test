@@ -34,7 +34,7 @@ public class Organism : MonoBehaviour
 //		}
 
 		addBaseObject ();
-		addBranch (baseObject.transform.position, new Vector3(0,0,0), mainTrunkLength, 4, true);
+		addBranch (baseObject.transform.position, new Vector3(1,1,0), mainTrunkLength, 4, true);
 	}
 	
 	// Update is called once per frame
@@ -54,7 +54,6 @@ public class Organism : MonoBehaviour
 		branches [branches.Count - 1].branchOutPosition = _branchoutPosition;
 		branches [branches.Count - 1].hasSubBranch = _hasSub;
 		newBranchGameobject.transform.parent = gameObject.transform;
-
 	}
 
 	public void changeModel (string _modelName)
@@ -64,7 +63,7 @@ public class Organism : MonoBehaviour
 
 	void addBaseObject ()
 	{
-		modelName = "officechair_collider";
+		modelName = "corgi_withcollider";
 		baseObject = (GameObject)Instantiate (Resources.Load (modelName));
 		baseObject.transform.position = gameObject.transform.position;//reset base object's position as Organism's position
 		baseObject.transform.parent = gameObject.transform;
