@@ -5,8 +5,6 @@ Project("{2CCBF310-830B-581C-4914-B6CFCAAAD9F8}") = "IAN CHEUNG PROJECT", "Assem
 EndProject
 Project("{2CCBF310-830B-581C-4914-B6CFCAAAD9F8}") = "IAN CHEUNG PROJECT", "Assembly-CSharp-vs.csproj", "{D11084E1-0141-5F5D-9F85-007E609350B2}"
 EndProject
-Project("{2CCBF310-830B-581C-4914-B6CFCAAAD9F8}") = "IAN CHEUNG PROJECT", "Assembly-CSharp-Editor-vs.csproj", "{E96ECBD8-B570-479F-BD9E-2D9CBBEB85A3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,15 +19,11 @@ Global
 		{D11084E1-0141-5F5D-9F85-007E609350B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D11084E1-0141-5F5D-9F85-007E609350B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D11084E1-0141-5F5D-9F85-007E609350B2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E96ECBD8-B570-479F-BD9E-2D9CBBEB85A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E96ECBD8-B570-479F-BD9E-2D9CBBEB85A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E96ECBD8-B570-479F-BD9E-2D9CBBEB85A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E96ECBD8-B570-479F-BD9E-2D9CBBEB85A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																GlobalSection(MonoDevelopProperties) = preSolution
+																					GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
