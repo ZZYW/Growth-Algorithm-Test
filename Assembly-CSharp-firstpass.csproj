@@ -49,6 +49,7 @@
      <Compile Include="Assets\Plugins\Organism Generator\OrganismBranch.cs" />
      <Compile Include="Assets\Plugins\Organism Generator\OrganismGenerator.cs" />
      <Compile Include="Assets\Plugins\Organism Generator\OrganismObject.cs" />
+     <Compile Include="Assets\Plugins\Organism Generator\OrganismObjectStabilizer.cs" />
      <Compile Include="Assets\Plugins\StickyStickStuck Package\Scripts\CamLookAtObject.cs" />
      <Compile Include="Assets\Plugins\StickyStickStuck Package\Scripts\DrawRope.cs" />
      <Compile Include="Assets\Plugins\StickyStickStuck Package\Scripts\MoveStickyObject.cs" />

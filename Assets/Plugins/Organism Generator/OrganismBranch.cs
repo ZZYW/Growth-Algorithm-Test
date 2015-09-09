@@ -17,24 +17,25 @@ public class OrganismBranch : MonoBehaviour
 			myGameObject = _g;
 		}
 	}
+
 	public int branchLength = 15;
 	public Vector3 direction;
 	Vector3 basePosition;
-	public float growingTimeGap = 1.0f;
+	public float growingTimeGap;
 	public Vector3 target;
 	public List<ObjectData> objectsData;
-	GameObject parent;
-	public int branchOutPosition;
-	public bool hasSubBranch;
+	GameObject parentGameObject;
+
 
 	void Start ()
 	{
-		parent = gameObject.transform.parent.gameObject;
+		parentGameObject = gameObject.transform.parent.gameObject;
 		objectsData = new List<ObjectData> ();
 		basePosition = gameObject.transform.position;
 		StartCoroutine ("WaitAndGrow");
 
-		branchOutPosition = (int)Random.Range (0, branchLength);
+		Organism myOrganismClass = parentGameObject.GetComponent<Organism>();
+		growingTimeGap = myOrganismClass.minimalGeneratingTimeGap;
 
 	}
 	
@@ -65,15 +66,15 @@ public class OrganismBranch : MonoBehaviour
 	
 	public void addObject ()
 	{
-		Organism parentScript = parent.GetComponent<Organism> ();
+		Organism parentScript = parentGameObject.GetComponent<Organism> ();
 
-		Vector3 previousObjectPos = parentScript.baseObject.transform.position + Vector3.up; //default pos is branch's base position
+		Vector3 previousObjectPos = parentScript.baseObject.transform.position + Vector3.up * 2; //default pos is branch's base position
 		if (objectsData.Count > 0)
 //			previousObjectPos = objectsData [objectsData.Count - 1].myGameObject.GetComponent<MeshRenderer> ().bounds.center;
 			previousObjectPos = objectsData[objectsData.Count - 1].myGameObject.transform.position;
 
-		Vector3 newPosition = previousObjectPos + Vector3.up * parent.GetComponent<Organism> ().objectDropingDistance + direction;
-		GameObject newObject = (GameObject)Instantiate (Resources.Load ("officechair_collider"), newPosition, Quaternion.identity);
+		Vector3 newPosition = previousObjectPos + Vector3.up * parentGameObject.GetComponent<Organism> ().objectDropingDistance + direction;
+		GameObject newObject = (GameObject)Instantiate (Resources.Load (parentScript.modelName), newPosition, Quaternion.identity);
 		StickyStickStuckPackage.StickyStickStuck newObjectSSS = newObject.AddComponent<StickyStickStuckPackage.StickyStickStuck> ();
 		Rigidbody newObjectRigidBody = newObject.GetComponent<Rigidbody> ();
 
@@ -92,28 +93,28 @@ public class OrganismBranch : MonoBehaviour
 		newObject.transform.parent = gameObject.transform;
 		objectsData.Add (new ObjectData (objectsData.Count, newObject));
 
-
-		if (objectsData.Count == 4 && hasSubBranch) {
-			int newBornBranchID = parentScript.branches.Count - 1;
-
-			parentScript.addBranch (objectsData [objectsData.Count - 1].myGameObject.transform.position,
-			                       Vector3.right,
-			                       9,
-			                       2,
-			                        false
-			);
-		}
-
-
-		if (objectsData.Count == 7 && hasSubBranch) {
-			int newBornBranchID = parentScript.branches.Count - 1;
-			
-			parentScript.addBranch (objectsData [objectsData.Count - 1].myGameObject.transform.position,
-			                        Vector3.left,
-			                        7,
-			                        2,	
-			                       false);
-		}
+//
+//		if (objectsData.Count == 4 && hasSubBranch) {
+//			int newBornBranchID = parentScript.branches.Count - 1;
+//
+//			parentScript.addBranch (objectsData [objectsData.Count - 1].myGameObject.transform.position,
+//			                       Vector3.right,
+//			                       9,
+//			                       2,
+//			                        false
+//			);
+//		}
+//
+//
+//		if (objectsData.Count == 7 && hasSubBranch) {
+//			int newBornBranchID = parentScript.branches.Count - 1;
+//			
+//			parentScript.addBranch (objectsData [objectsData.Count - 1].myGameObject.transform.position,
+//			                        Vector3.left,
+//			                        7,
+//			                        2,	
+//			                       false);
+//		}
 
 
 
