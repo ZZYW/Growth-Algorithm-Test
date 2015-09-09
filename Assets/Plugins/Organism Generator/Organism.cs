@@ -35,23 +35,15 @@ public class Organism : MonoBehaviour
 	[Range(1,5)]
 	public int
 		branchNumber = 2;
-	[Range(1,30)]
+	[Range(1,100)]
 	public int
 		mainTrunkLength = 4;
 	public int branchLenghMin = 3;
 	public int branchLenghMax = 8;
+
 	[HideInInspector]
-	public List<int>
-		branchesLength;
-	[HideInInspector]
-	public List<int>
-		branchoutPosition;
-	[HideInInspector]
-	public List<OrganismBranch>
-		allBranchClasses;
-	[HideInInspector]
-	public List<Vector3>
-		growDirections;
+	public List<GameObject>
+		branches;
 
 	//object
 	[Range(0.1f, 1.0f)]
@@ -64,30 +56,37 @@ public class Organism : MonoBehaviour
 	public float
 		minimalGeneratingTimeGap = 1.0f;
 
+	public int objectSum;
+
 	void Start ()
 	{
 		updateModel ();
-		allBranchClasses = new List<OrganismBranch> ();
+		branches = new List<GameObject> ();
 		addBaseObject ();
 
 		switch (growthAlgorithmPresets) {
 		case GrowthAlgorithm.StraightUp:
 			//nothing fancy, main trunk growing upward
-			addBranch (baseObject.transform.position, new Vector3 (0, 1, 0), mainTrunkLength);
+			GameObject newbranch = addBranch (baseObject.transform.position, Vector3.up, mainTrunkLength);
 			break;
 		case GrowthAlgorithm.RoundCluster:
 			//one branch with a random direction
+			GameObject newborn =  addBranch(baseObject.transform.position, new Vector3(0,0,0), mainTrunkLength);
+			newborn.GetComponent<OrganismBranch>().isCluster = true;
 			break;
 		case GrowthAlgorithm.LeftLeaning:
 			//trunk with a left growing direction
 			//branch at early position, new branch with a slightly smaller left direction 
 			//branch at early position based on the second branch, new branch with a slight smaller left direction than the 2rd branch
+			addBranch(baseObject.transform.position, Vector3.left/4,mainTrunkLength);
 			break;
 		case GrowthAlgorithm.RightLeaning:
 			//same as the leftleaning but with right direction
+			addBranch(baseObject.transform.position, Vector3.right/4,mainTrunkLength);
 			break;
 		case GrowthAlgorithm.Balanced:
 			//main trunk grows upward, branch out base on the same object in trunk and each growing towards opposite direction, with similar length
+			addBranch(baseObject.transform.position, new Vector3(0,0,0),(mainTrunkLength));
 			break;
 		}
 
@@ -99,15 +98,18 @@ public class Organism : MonoBehaviour
 		updateModel ();
 	}
 
-	public void addBranch (Vector3 _basePosition, Vector3 _growDirection, int _length)
+	public GameObject addBranch (Vector3 _basePosition, Vector3 _dir, int length)
 	{
 		GameObject newBranchGameobject = new GameObject ();
-		newBranchGameobject.name = "Branch" + " " + allBranchClasses.Count;
+		newBranchGameobject.name = "Branch";
 		newBranchGameobject.transform.position = _basePosition;
-		allBranchClasses.Add (newBranchGameobject.AddComponent<OrganismBranch> ());
-		allBranchClasses [allBranchClasses.Count - 1].branchLength = _length;
-		allBranchClasses [allBranchClasses.Count - 1].direction = _growDirection;
+		OrganismBranch newOB =	newBranchGameobject.AddComponent<OrganismBranch> ();
+		newOB.direction = _dir;
 		newBranchGameobject.transform.parent = gameObject.transform;
+		newOB.index = branches.Count; //0,1,2,3....
+		newOB.branchLength = length;
+		branches.Add(newBranchGameobject);
+		return newBranchGameobject;
 	}
 
 	public void changeModel (string _modelName)

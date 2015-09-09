@@ -18,31 +18,41 @@ public class OrganismBranch : MonoBehaviour
 		}
 	}
 
-	public int branchLength = 15;
+
+	float modelBoundSize;
+
+	//given value when class is init
+	public int index;
+	public int branchLength;
 	public Vector3 direction;
-	Vector3 basePosition;
-	public float growingTimeGap;
-	public Vector3 target;
+	public bool isCluster;
+
+
+
+	//inherit value from parent
+	float growingTimeGap;
+	Organism myOrganismClass;
+
+
+
+
+	//self use
 	public List<ObjectData> objectsData;
 	GameObject parentGameObject;
-
 
 	void Start ()
 	{
 		parentGameObject = gameObject.transform.parent.gameObject;
+		myOrganismClass = parentGameObject.GetComponent<Organism> ();
 		objectsData = new List<ObjectData> ();
-		basePosition = gameObject.transform.position;
-		StartCoroutine ("WaitAndGrow");
-
-		Organism myOrganismClass = parentGameObject.GetComponent<Organism>();
 		growingTimeGap = myOrganismClass.minimalGeneratingTimeGap;
 
+		StartCoroutine ("WaitAndGrow");
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-
 	}
 
 	public void stopGrow ()
@@ -66,22 +76,35 @@ public class OrganismBranch : MonoBehaviour
 	
 	public void addObject ()
 	{
-		Organism parentScript = parentGameObject.GetComponent<Organism> ();
+		Organism myOrganismClass = parentGameObject.GetComponent<Organism> ();
 
-		Vector3 previousObjectPos = parentScript.baseObject.transform.position + Vector3.up * 2; //default pos is branch's base position
-		if (objectsData.Count > 0)
+
+
+		Vector3 previousObjectPos = myOrganismClass.baseObject.transform.position + Vector3.up * 2; //default pos is branch's base position
+		if (objectsData.Count > 0) {
 //			previousObjectPos = objectsData [objectsData.Count - 1].myGameObject.GetComponent<MeshRenderer> ().bounds.center;
-			previousObjectPos = objectsData[objectsData.Count - 1].myGameObject.transform.position;
+			previousObjectPos = objectsData [objectsData.Count - 1].myGameObject.transform.position;
+		}
+		Vector3 newPosition;
+		if(isCluster && myOrganismClass.objectSum < branchLength){
+			Debug.Log("is cluster!");
+			float randomRange = modelBoundSize;
+			Vector3 randomOffset = new Vector3(Random.Range(-randomRange,randomRange),
+			                                   0,
+			                                   Random.Range(-randomRange,randomRange));
+			newPosition = gameObject.transform.position + randomOffset + Vector3.up/2 * myOrganismClass.objectDropingDistance + new Vector3(0,previousObjectPos.y,0);
+		}else{
+			newPosition = previousObjectPos + Vector3.up * myOrganismClass.objectDropingDistance + direction;
 
-		Vector3 newPosition = previousObjectPos + Vector3.up * parentGameObject.GetComponent<Organism> ().objectDropingDistance + direction;
-		GameObject newObject = (GameObject)Instantiate (Resources.Load (parentScript.modelName), newPosition, Quaternion.identity);
+		}
+
+
+		GameObject newObject = (GameObject)Instantiate (Resources.Load (myOrganismClass.modelName), newPosition, Quaternion.identity);
+		modelBoundSize = newObject.GetComponent<MeshRenderer> ().bounds.extents.magnitude;
+		Debug.Log (modelBoundSize);
 		StickyStickStuckPackage.StickyStickStuck newObjectSSS = newObject.AddComponent<StickyStickStuckPackage.StickyStickStuck> ();
 		Rigidbody newObjectRigidBody = newObject.GetComponent<Rigidbody> ();
-
-		//set it invisible before it actually sticks to anything
 		newObject.GetComponent<MeshRenderer> ().enabled = false;
-	
-		//Rigidbody parameters change
 		newObjectRigidBody.mass = 0.1f;
 		newObjectRigidBody.drag = 0.5f;
 		newObjectRigidBody.angularDrag = 0.0f;
@@ -93,28 +116,7 @@ public class OrganismBranch : MonoBehaviour
 		newObject.transform.parent = gameObject.transform;
 		objectsData.Add (new ObjectData (objectsData.Count, newObject));
 
-//
-//		if (objectsData.Count == 4 && hasSubBranch) {
-//			int newBornBranchID = parentScript.branches.Count - 1;
-//
-//			parentScript.addBranch (objectsData [objectsData.Count - 1].myGameObject.transform.position,
-//			                       Vector3.right,
-//			                       9,
-//			                       2,
-//			                        false
-//			);
-//		}
-//
-//
-//		if (objectsData.Count == 7 && hasSubBranch) {
-//			int newBornBranchID = parentScript.branches.Count - 1;
-//			
-//			parentScript.addBranch (objectsData [objectsData.Count - 1].myGameObject.transform.position,
-//			                        Vector3.left,
-//			                        7,
-//			                        2,	
-//			                       false);
-//		}
+		myOrganismClass.objectSum++;
 
 
 
