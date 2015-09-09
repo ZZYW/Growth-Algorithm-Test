@@ -101,7 +101,6 @@ public class OrganismBranch : MonoBehaviour
 
 		GameObject newObject = (GameObject)Instantiate (Resources.Load (myOrganismClass.modelName), newPosition, Quaternion.identity);
 		modelBoundSize = newObject.GetComponent<MeshRenderer> ().bounds.extents.magnitude;
-		Debug.Log (modelBoundSize);
 		StickyStickStuckPackage.StickyStickStuck newObjectSSS = newObject.AddComponent<StickyStickStuckPackage.StickyStickStuck> ();
 		Rigidbody newObjectRigidBody = newObject.GetComponent<Rigidbody> ();
 		newObject.GetComponent<MeshRenderer> ().enabled = false;

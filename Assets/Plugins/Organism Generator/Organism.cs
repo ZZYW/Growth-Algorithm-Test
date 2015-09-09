@@ -25,25 +25,34 @@ public class Organism : MonoBehaviour
 	public GrowthAlgorithm growthAlgorithmPresets;
 	[HideInInspector]
 	public float
-		objectDropingDistance = 2.0f;
+		objectDropingDistance = 1.0f;
 	[HideInInspector]
 	public GameObject
 		baseObject;
 	public string modelName;
 	
 	//organism shape
-	[Range(1,5)]
-	public int
-		branchNumber = 2;
+
 	[Range(1,100)]
 	public int
 		mainTrunkLength = 4;
 	public int branchLenghMin = 3;
 	public int branchLenghMax = 8;
-
 	[HideInInspector]
 	public List<GameObject>
 		branches;
+
+	//leaning related
+	Vector3 trunkLeftLeanAngle;
+	Vector3 trunkRightLeanAngle;
+	float leanAngleDiminishRate = 1.4f;
+	int leaningSecondBranchOutLocation = 4; //from the ?th object of the first branch
+
+
+	//balance related
+	int forkPosition = 3;
+	List<Vector3> balanceBranchDirections;
+
 
 	//object
 	[Range(0.1f, 1.0f)]
@@ -55,14 +64,27 @@ public class Organism : MonoBehaviour
 	[Range(1.0f,20.0f)]
 	public float
 		minimalGeneratingTimeGap = 1.0f;
-
 	public int objectSum;
+	public float modelSize;
 
 	void Start ()
 	{
+
+
 		updateModel ();
+		modelSize = ModelSize ();
 		branches = new List<GameObject> ();
 		addBaseObject ();
+
+		trunkLeftLeanAngle = Vector3.left * modelSize / 10;
+		trunkRightLeanAngle = Vector3.right * modelSize / 10;
+
+		balanceBranchDirections = new List<Vector3>();
+		balanceBranchDirections.Add(new Vector3(1,0,1));
+		balanceBranchDirections.Add(new Vector3(-1,0,1));
+		balanceBranchDirections.Add(new Vector3(1,0,-1));
+
+
 
 		switch (growthAlgorithmPresets) {
 		case GrowthAlgorithm.StraightUp:
@@ -71,22 +93,22 @@ public class Organism : MonoBehaviour
 			break;
 		case GrowthAlgorithm.RoundCluster:
 			//one branch with a random direction
-			GameObject newborn =  addBranch(baseObject.transform.position, new Vector3(0,0,0), mainTrunkLength);
-			newborn.GetComponent<OrganismBranch>().isCluster = true;
+			GameObject newborn = addBranch (baseObject.transform.position, new Vector3 (0, 0, 0), mainTrunkLength);
+			newborn.GetComponent<OrganismBranch> ().isCluster = true;
 			break;
 		case GrowthAlgorithm.LeftLeaning:
 			//trunk with a left growing direction
 			//branch at early position, new branch with a slightly smaller left direction 
 			//branch at early position based on the second branch, new branch with a slight smaller left direction than the 2rd branch
-			addBranch(baseObject.transform.position, Vector3.left/4,mainTrunkLength);
+			addBranch (baseObject.transform.position, Vector3.left * modelSize / 10, mainTrunkLength);
 			break;
 		case GrowthAlgorithm.RightLeaning:
 			//same as the leftleaning but with right direction
-			addBranch(baseObject.transform.position, Vector3.right/4,mainTrunkLength);
+			addBranch (baseObject.transform.position, Vector3.right * modelSize / 10, mainTrunkLength);
 			break;
 		case GrowthAlgorithm.Balanced:
 			//main trunk grows upward, branch out base on the same object in trunk and each growing towards opposite direction, with similar length
-			addBranch(baseObject.transform.position, new Vector3(0,0,0),(mainTrunkLength));
+			addBranch (baseObject.transform.position, Vector3.up, forkPosition + 2);
 			break;
 		}
 
@@ -96,6 +118,54 @@ public class Organism : MonoBehaviour
 	void Update ()
 	{
 		updateModel ();
+
+		switch (growthAlgorithmPresets) {
+		case GrowthAlgorithm.StraightUp:
+			break;
+		case GrowthAlgorithm.RoundCluster:
+			break;
+		case GrowthAlgorithm.LeftLeaning:
+			if (branches.Count == 1) {
+				if (branches [0].GetComponent<OrganismBranch> ().objectsData.Count > leaningSecondBranchOutLocation) {
+					addBranch (branches [0].GetComponent<OrganismBranch> ().objectsData [leaningSecondBranchOutLocation - 1].myGameObject.transform.position,
+					           trunkLeftLeanAngle / leanAngleDiminishRate, (int)mainTrunkLength - 3);
+				}
+			}
+			break;
+		case GrowthAlgorithm.RightLeaning:
+			if (branches.Count == 1) {
+				if (branches [0].GetComponent<OrganismBranch> ().objectsData.Count > leaningSecondBranchOutLocation) {
+					addBranch (branches [0].GetComponent<OrganismBranch> ().objectsData [leaningSecondBranchOutLocation - 1].myGameObject.transform.position,
+					           trunkRightLeanAngle / leanAngleDiminishRate, (int)mainTrunkLength - 3);
+
+				}
+			}
+			break;
+		case GrowthAlgorithm.Balanced:
+
+			if(branches.Count == 1){
+				if(branches[0].GetComponent<OrganismBranch>().objectsData.Count > forkPosition){
+
+					addBranch (branches [0].GetComponent<OrganismBranch> ().objectsData [forkPosition - 1].myGameObject.transform.position,
+					           balanceBranchDirections[0]/leanAngleDiminishRate, mainTrunkLength);
+
+					addBranch (branches [0].GetComponent<OrganismBranch> ().objectsData [forkPosition - 1].myGameObject.transform.position,
+					           balanceBranchDirections[1]/leanAngleDiminishRate, mainTrunkLength);
+
+					addBranch (branches [0].GetComponent<OrganismBranch> ().objectsData [forkPosition - 1].myGameObject.transform.position,
+					           balanceBranchDirections[2]/leanAngleDiminishRate, mainTrunkLength);
+				}
+			}
+
+
+
+
+
+			break;
+		}
+
+
+
 	}
 
 	public GameObject addBranch (Vector3 _basePosition, Vector3 _dir, int length)
@@ -103,12 +173,12 @@ public class Organism : MonoBehaviour
 		GameObject newBranchGameobject = new GameObject ();
 		newBranchGameobject.name = "Branch";
 		newBranchGameobject.transform.position = _basePosition;
-		OrganismBranch newOB =	newBranchGameobject.AddComponent<OrganismBranch> ();
+		OrganismBranch newOB = newBranchGameobject.AddComponent<OrganismBranch> ();
 		newOB.direction = _dir;
 		newBranchGameobject.transform.parent = gameObject.transform;
 		newOB.index = branches.Count; //0,1,2,3....
 		newOB.branchLength = length;
-		branches.Add(newBranchGameobject);
+		branches.Add (newBranchGameobject);
 		return newBranchGameobject;
 	}
 
@@ -140,6 +210,13 @@ public class Organism : MonoBehaviour
 			changeModel ("officechair_collider");
 			break;
 		}
+	}
+
+	private float ModelSize ()
+	{
+		GameObject newObject = (GameObject)Resources.Load (modelName);
+		float size = newObject.GetComponent<MeshRenderer> ().bounds.size.magnitude;
+		return size;
 	}
 
 

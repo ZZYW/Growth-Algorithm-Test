@@ -5,16 +5,17 @@ public class OrganismObject : MonoBehaviour
 {
 
 	public int myIndex{ get; set; }
+
 	public bool growingCompleted { get; set; }
 
 
 	//value set by Organism
 	Vector3 startScale;
 	float growingSpeed;
-
 	Vector3 growingVelocity;
-	
 	Vector3 targetScale;
+
+	bool gravityChanged = false;
 
 
 	
@@ -59,8 +60,9 @@ public class OrganismObject : MonoBehaviour
 
 
 		//When The Object is All Set
-		if (growingCompleted && gameObject.GetComponent<FixedJoint> () != null) {
+		if (growingCompleted && gameObject.GetComponent<FixedJoint> () != null && !gravityChanged) {
 			gameObject.GetComponent<Rigidbody> ().useGravity = false;
+			gravityChanged = true;
 		}
 
 
@@ -73,10 +75,16 @@ public class OrganismObject : MonoBehaviour
 
 	}
 
-//	public void generateBranchBasedOnMe (string type)
-//	{
-//		gameObject.transform.parent.transform.parent.GetComponent<Organism> ().addBranch (gameObject.transform.position);
-//	}
+	void OnCollisionEnter (Collision col)
+	{
+		if (gameObject.GetComponent<FixedJoint> () == null) {
+			if (col.gameObject.tag != "organismObject" && myIndex > 0 ) {
+				OrganismBranch parentScript = gameObject.transform.parent.GetComponent<OrganismBranch> ();
+				parentScript.objectsData.RemoveAt (parentScript.objectsData.Count - 1);
+				Destroy (gameObject);
+			}
+		}
+	}
 
 
 }
