@@ -7,15 +7,19 @@ public class OrganismObject : MonoBehaviour
 	public int myIndex{ get; set; }
 
 	public bool growingCompleted { get; set; }
+//	public bool hitSomething {get;set;}
 
+	Organism myOrganismClass;
+	OrganismBranch myOrganismBranchClass;
 
 	//value set by Organism
 	Vector3 startScale;
 	float growingSpeed;
 	Vector3 growingVelocity;
 	Vector3 targetScale;
-
 	bool gravityChanged = false;
+
+
 
 
 	
@@ -23,16 +27,17 @@ public class OrganismObject : MonoBehaviour
 	void Start ()
 	{
 		//get paremeter value from Organism
-		Organism organismScript = gameObject.transform.parent.transform.parent.GetComponent<Organism> ();
-		growingSpeed = organismScript.growingSpeed;
-		startScale = new Vector3 (organismScript.newBornScale, organismScript.newBornScale, organismScript.newBornScale);
+		myOrganismClass = gameObject.transform.parent.transform.parent.GetComponent<Organism> ();
+		myOrganismBranchClass = gameObject.transform.parent.GetComponent<OrganismBranch> ();
 
+		growingSpeed = myOrganismClass.growingSpeed;
+		startScale = new Vector3 (myOrganismClass.newBornScale, myOrganismClass.newBornScale, myOrganismClass.newBornScale);
 
-		gameObject.tag = "organismObject";
+		gameObject.tag = myOrganismClass.objectTagName;
 		growingVelocity = new Vector3 (growingSpeed, growingSpeed, growingSpeed);
 		gameObject.transform.localScale = startScale;
 		gameObject.transform.rotation = Random.rotation;
-		float randomSize = Random.Range (0.7f, 1.0f);
+		float randomSize = Random.Range (0.7f, 1.4f) * myOrganismClass.modelSizeCorrection;
 		targetScale = new Vector3 (randomSize, randomSize, randomSize);
 	}
 	
@@ -58,31 +63,24 @@ public class OrganismObject : MonoBehaviour
 		
 		}
 
-
 		//When The Object is All Set
 		if (growingCompleted && gameObject.GetComponent<FixedJoint> () != null && !gravityChanged) {
 			gameObject.GetComponent<Rigidbody> ().useGravity = false;
 			gravityChanged = true;
 		}
-
-
-		if (growingCompleted && gameObject.GetComponent<FixedJoint> () == null) {
-			OrganismBranch parentScript = gameObject.transform.parent.GetComponent<OrganismBranch> ();
-			parentScript.objectsData.RemoveAt (parentScript.objectsData.Count - 1);
-			Destroy (gameObject);
-		}
-
-
 	}
 
 	void OnCollisionEnter (Collision col)
 	{
 		if (gameObject.GetComponent<FixedJoint> () == null) {
-			if (col.gameObject.tag != "organismObject" && myIndex > 0 ) {
-				OrganismBranch parentScript = gameObject.transform.parent.GetComponent<OrganismBranch> ();
-				parentScript.objectsData.RemoveAt (parentScript.objectsData.Count - 1);
+			//If it hits ground first, destroy it
+			if (col.gameObject == myOrganismClass.ground && myIndex > 0) {
+				myOrganismBranchClass.objectsData.RemoveAt (myOrganismBranchClass.objectsData.Count - 1);
+				myOrganismBranchClass.objectMissedNumber++;
 				Destroy (gameObject);
 			}
+		}else{
+			myOrganismBranchClass.objectMissedNumber = 0;
 		}
 	}
 

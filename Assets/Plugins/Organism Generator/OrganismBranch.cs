@@ -20,12 +20,15 @@ public class OrganismBranch : MonoBehaviour
 
 
 	float modelBoundSize;
+	public int objectMissedNumber;
 
 	//given value when class is init
 	public int index;
 	public int branchLength;
 	public Vector3 direction;
-	public bool isCluster;
+	[HideInInspector]
+	public bool
+		isCluster;
 
 
 
@@ -53,6 +56,7 @@ public class OrganismBranch : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+	
 	}
 
 	public void stopGrow ()
@@ -66,8 +70,12 @@ public class OrganismBranch : MonoBehaviour
 			if (objectsData.Count == 0) {
 				addObject ();
 			} else {
-				if (objectsData [objectsData.Count - 1].myGameObject.GetComponent<OrganismObject> ().growingCompleted || objectsData.Count == 0) {
-					addObject ();
+				if (objectsData [objectsData.Count - 1].myGameObject != null) {
+					if (objectsData [objectsData.Count - 1].myGameObject.GetComponent<OrganismObject> ().growingCompleted) {
+						addObject ();
+					}
+				}else{
+					objectsData.RemoveAt(objectsData.Count - 1);
 				}
 			}
 			yield return new WaitForSeconds (growingTimeGap);
@@ -78,24 +86,25 @@ public class OrganismBranch : MonoBehaviour
 	{
 		Organism myOrganismClass = parentGameObject.GetComponent<Organism> ();
 
-
-
-		Vector3 previousObjectPos = myOrganismClass.baseObject.transform.position + Vector3.up * 2; //default pos is branch's base position
+		Vector3 previousObjectPos = myOrganismClass.gameObject.transform.position + Vector3.up * 2; //default pos is branch's base position
 		if (objectsData.Count > 0) {
 //			previousObjectPos = objectsData [objectsData.Count - 1].myGameObject.GetComponent<MeshRenderer> ().bounds.center;
 			previousObjectPos = objectsData [objectsData.Count - 1].myGameObject.transform.position;
 		}
 		Vector3 newPosition;
-		if(isCluster && myOrganismClass.objectSum < branchLength){
-			Debug.Log("is cluster!");
+		if (isCluster && myOrganismClass.objectSum < branchLength) {
+//			Debug.Log("is cluster!");
 			float randomRange = modelBoundSize;
-			Vector3 randomOffset = new Vector3(Random.Range(-randomRange,randomRange),
+			Vector3 randomOffset = new Vector3 (Random.Range (-randomRange, randomRange),
 			                                   0,
-			                                   Random.Range(-randomRange,randomRange));
-			newPosition = gameObject.transform.position + randomOffset + Vector3.up/2 * myOrganismClass.objectDropingDistance + new Vector3(0,previousObjectPos.y,0);
-		}else{
-			newPosition = previousObjectPos + Vector3.up * myOrganismClass.objectDropingDistance + direction;
-
+			                                   Random.Range (-randomRange, randomRange));
+			newPosition = gameObject.transform.position + randomOffset + Vector3.up / 2 * myOrganismClass.objectDropingDistance + new Vector3 (0, previousObjectPos.y, 0);
+		} else {
+			float correction = (float)-0.2 * objectMissedNumber + 1;
+			if (correction < 0)
+				correction = 0;
+			newPosition = previousObjectPos + Vector3.up * myOrganismClass.objectDropingDistance + direction * correction;
+			Debug.Log("PreviousPosition: " + previousObjectPos + " New Position: " + newPosition);
 		}
 
 
