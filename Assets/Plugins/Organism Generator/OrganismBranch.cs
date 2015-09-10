@@ -86,9 +86,9 @@ public class OrganismBranch : MonoBehaviour
 	{
 		Organism myOrganismClass = parentGameObject.GetComponent<Organism> ();
 
-		Vector3 previousObjectPos = myOrganismClass.gameObject.transform.position + Vector3.up * 2; //default pos is branch's base position
+//		Vector3 previousObjectPos = myOrganismClass.gameObject.transform.position + Vector3.up * 2; //default pos is branch's base position
+		Vector3 previousObjectPos = gameObject.transform.position + Vector3.up;
 		if (objectsData.Count > 0) {
-//			previousObjectPos = objectsData [objectsData.Count - 1].myGameObject.GetComponent<MeshRenderer> ().bounds.center;
 			previousObjectPos = objectsData [objectsData.Count - 1].myGameObject.transform.position;
 		}
 		Vector3 newPosition;
@@ -104,7 +104,6 @@ public class OrganismBranch : MonoBehaviour
 			if (correction < 0)
 				correction = 0;
 			newPosition = previousObjectPos + Vector3.up * myOrganismClass.objectDropingDistance + direction * correction;
-			Debug.Log("PreviousPosition: " + previousObjectPos + " New Position: " + newPosition);
 		}
 
 

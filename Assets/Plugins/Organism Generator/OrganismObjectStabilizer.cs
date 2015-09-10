@@ -4,17 +4,16 @@ using System.Collections;
 public class OrganismObjectStabilizer : MonoBehaviour {
 
 
-	[Range(1.0f,7.0f)]
+	[Range(3.0f,20.0f)]
 	public float period = 5.0f;
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine("cancelMomentum");
+		StartCoroutine("cleanUpMomentum");
 	}
 
-	IEnumerator cancelMomentum ()
+	IEnumerator cleanUpMomentum ()
 	{
-		
 		while(true){
 			GameObject[] allOrganismObjects = GameObject.FindGameObjectsWithTag("organismObject");
 			for(int i=0;i<allOrganismObjects.Length;i++){
