@@ -45,7 +45,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Editor\OrganismEditor.cs" />
+     <Compile Include="Assets\Editor\BranchEditor.cs" />
      <None Include="Assets\Plugins\StickyStickStuck Package\ReadMe.txt" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Plugins\donotdelete.txt" />

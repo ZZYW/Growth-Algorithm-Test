@@ -4,7 +4,7 @@ using System.Collections;
 public class OrganismObjectStabilizer : MonoBehaviour {
 
 
-	[Range(3.0f,20.0f)]
+	[Range(0.5f,20.0f)]
 	public float period = 5.0f;
 
 	// Use this for initialization

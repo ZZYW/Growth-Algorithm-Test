@@ -106,7 +106,6 @@ public class OrganismBranch : MonoBehaviour
 			newPosition = previousObjectPos + Vector3.up * myOrganismClass.objectDropingDistance + direction * correction;
 		}
 
-
 		GameObject newObject = (GameObject)Instantiate (Resources.Load (myOrganismClass.modelName), newPosition, Quaternion.identity);
 		modelBoundSize = newObject.GetComponent<MeshRenderer> ().bounds.extents.magnitude;
 		StickyStickStuckPackage.StickyStickStuck newObjectSSS = newObject.AddComponent<StickyStickStuckPackage.StickyStickStuck> ();
@@ -114,7 +113,7 @@ public class OrganismBranch : MonoBehaviour
 		newObject.GetComponent<MeshRenderer> ().enabled = false;
 		newObjectRigidBody.mass = 0.1f;
 		newObjectRigidBody.drag = 0.5f;
-		newObjectRigidBody.angularDrag = 0.0f;
+		newObjectRigidBody.angularDrag = 0f;
 		newObjectSSS.stickProperties.stickNonRigidbodys = false;
 		newObjectSSS.infectionProperties.affectInfected = true;
 		OrganismObject myOrgan = newObject.AddComponent<OrganismObject> ();
@@ -122,11 +121,22 @@ public class OrganismBranch : MonoBehaviour
 		newObject.name = "Object" + objectsData.Count;
 		newObject.transform.parent = gameObject.transform;
 		objectsData.Add (new ObjectData (objectsData.Count, newObject));
-
 		myOrganismClass.objectSum++;
+	}
 
 
-
+	public void breakBranch(){
+		foreach(ObjectData o in objectsData){
+			StopCoroutine ("WaitAndGrow");
+			o.myGameObject.GetComponent<StickyStickStuckPackage.StickyStickStuck>().enable = false;
+			Destroy(o.myGameObject.GetComponent<Joint>());
+			o.myGameObject.GetComponent<Rigidbody>().useGravity = true;
+			o.myGameObject.tag = "Untagged";
+			o.myGameObject.transform.parent = parentGameObject.transform.FindChild("BreakOffObjects").transform;
+			gameObject.name = "Broken Branch";
+			Destroy(o.myGameObject.GetComponent<OrganismObject>());
+		}
+		objectsData.Clear();
 	}
 
 

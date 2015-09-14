@@ -91,6 +91,7 @@
 'Assets/Plugins/StickyStickStuck Package/Scripts/StickmanPlayButton.cs'
 'Assets/Plugins/StickyStickStuck Package/Scripts/StickyStickStuck.cs'
 'Assets/Plugins/StickyStickStuck Package/Scripts/StickyStickStuckVisualizer.cs'
+'Assets/Plugins/StickyStickStuck Package/Scripts/StickyStickStuck_backup.cs'
 'Assets/Standard Assets/Character Controllers/Sources/Scripts/MouseLook.cs'
 -r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Xml.Linq.dll'

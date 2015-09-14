@@ -367,7 +367,7 @@ namespace StickyStickStuckPackage
                     case StickProperties.StickType.Fixed:
 
                         //Sets up the Fixed joint properties
-                        FixedJoint fixedJoint = new FixedJoint();
+						FixedJoint fixedJoint = new FixedJoint();
                         fixedJoint = parent.AddComponent<FixedJoint>();
                         newConnectedObject.fixedJoint = fixedJoint;
 

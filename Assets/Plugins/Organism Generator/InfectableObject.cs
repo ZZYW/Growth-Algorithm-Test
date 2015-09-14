@@ -23,7 +23,6 @@ public class InfectableObject : MonoBehaviour {
 	void Start () {
 		myModelName = gameObject.name;
 		newGrowthAlgo = GetRandomEnum<GrowthAlgorithm>();
-//		newGrowthAlgo = GrowthAlgorithm.StraightUp;
 	}
 
 	// Update is called once per frame

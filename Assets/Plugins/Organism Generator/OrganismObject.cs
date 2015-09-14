@@ -43,36 +43,31 @@ public class OrganismObject : MonoBehaviour
 	
 	void Update ()
 	{
-		//Invisible before it sticks to anything
-		if (gameObject.GetComponent<FixedJoint> () != null) {
-			foreach (FixedJoint fj in gameObject.GetComponents<FixedJoint>()) {
-				fj.enablePreprocessing = false;
-			}
+		//When it has already sticked to something.
+		if (gameObject.GetComponent<Joint> () != null) {
 			gameObject.GetComponent<MeshRenderer> ().enabled = true;
+			if(!gravityChanged){
+				gameObject.GetComponent<Rigidbody> ().useGravity = false;
+				gravityChanged = true;
+			}
 		}
-	
-		//Growing Size
+
+
 		if (gameObject.transform.localScale.magnitude < targetScale.magnitude && !growingCompleted) {
 			Vector3 temp = gameObject.transform.localScale;
 			temp += growingVelocity * Time.deltaTime;
 			gameObject.transform.localScale = temp;
-
 		} else {
+			//When the size growing is completed.
 			growingCompleted = true;
 			gameObject.GetComponent<StickyStickStuckPackage.StickyStickStuck> ().infectionProperties.affectInfected = false;
-		
 		}
 
-		//When The Object is All Set
-		if (growingCompleted && gameObject.GetComponent<FixedJoint> () != null && !gravityChanged) {
-			gameObject.GetComponent<Rigidbody> ().useGravity = false;
-			gravityChanged = true;
-		}
 	}
 
 	void OnCollisionEnter (Collision col)
 	{
-		if (gameObject.GetComponent<FixedJoint> () == null) {
+		if (gameObject.GetComponent<Joint> () == null) {
 			//If it hits ground first, destroy it
 			if (col.gameObject == myOrganismClass.ground && myIndex > 0) {
 				myOrganismBranchClass.objectsData.RemoveAt (myOrganismBranchClass.objectsData.Count - 1);

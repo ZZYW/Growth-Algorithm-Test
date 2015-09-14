@@ -33,7 +33,7 @@ public class Organism : MonoBehaviour
 	public float modelBoundSize = 5.0f;
 	[HideInInspector]
 	public float
-		objectDropingDistance = 0.5f;
+		objectDropingDistance = 0.3f;
 	[HideInInspector]
 	public GameObject
 		baseObject;
@@ -231,7 +231,7 @@ public class Organism : MonoBehaviour
 	private float ModelSize ()
 	{
 		GameObject newObject = (GameObject)Resources.Load (modelName);
-		float size = newObject.GetComponent<MeshRenderer> ().bounds.size.magnitude;
+		float size = newObject.GetComponent<MeshRenderer>().bounds.size.magnitude;
 		modelSizeCorrection = modelBoundSize / size;
 		return size;
 	}
