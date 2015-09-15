@@ -54,18 +54,72 @@ public class Organism : MonoBehaviour
 	public List<GameObject>
 		allBranchGameObjects;
 
+	[System.Serializable]
+	public class AlgorithmProperties {
+		[System.Serializable]
+		public class StraightUpProperties {
+			public int trunkLength = 24;
+		}
+		public StraightUpProperties strightUpProperties; 
+
+		[System.Serializable]
+		public class BalanceProperties {
+			public int trunkLength = 7;
+			public int forkStartLocation = 3; //Notice:  has to be smaller than trunkLength
+			[HideInInspector]
+			public Vector3 b1Direction = new Vector3(1,0,1);
+			[HideInInspector]
+			public Vector3 b2Direction = new Vector3(-1,0,1);
+			[HideInInspector]
+			public Vector3 b3Direction = new Vector3(1,0,-1);
+			[HideInInspector]
+			public float leanAngleDiminishRate = 1.4f;
+			public int branchLength = 15;
+		}
+		public BalanceProperties balanceProperties;
+		[System.Serializable]
+		public class LeftLeaningProperties {
+			public int trunkLength = 30;
+			[HideInInspector]
+			public float leanAngleDiminishRate = 1.4f;
+			public int secondBranchOutLocation = 4;
+			public int secondBranchLength = 20;
+			[HideInInspector]
+			public Vector3 leanAngle;
+		}
+		public LeftLeaningProperties leftLeaningProperties;
+
+		[System.Serializable]
+		public class RightLeaningProperties{
+			public int trunkLength = 30;
+			[HideInInspector]
+			public float leanAngleDiminishRate = 1.4f;
+			public int secondBranchOutLocation = 4;
+			public int secondBranchLength = 20;
+			[HideInInspector]
+			public Vector3 leanAngle;
+		}
+		public RightLeaningProperties rightLeaningProperties;
+
+		[System.Serializable]
+		public class ClusterProperties{
+			public int trunkLength;
+		}
+		public ClusterProperties clusterProperties;
+	}
+
+	public AlgorithmProperties algorithmProperties;
+
 	//leaning related
-	Vector3 trunkLeftLeanAngle;
-	Vector3 trunkRightLeanAngle;
-	float leanAngleDiminishRate = 1.4f;
-	int leaningSecondBranchOutLocation = 4; //from the ?th object of the first branch
+//	Vector3 trunkLeftLeanAngle;
+//	Vector3 trunkRightLeanAngle;
+//	float leanAngleDiminishRate = 1.4f;
+//	int leaningSecondBranchOutLocation = 4; //from the ?th object of the first branch
 
 
 	//balance related
-	int forkPosition = 3;
-	List<Vector3> balanceBranchDirections;
-	
-	//object
+//	int forkPosition = 3;
+
 	[Range(0.1f, 1.0f)]
 	public float
 		growingSpeed = 0.3f;
@@ -84,10 +138,18 @@ public class Organism : MonoBehaviour
 	[HideInInspector]
 	public string
 		objectTagName = "organismObject";
+	
+	void Awake(){
+		algorithmProperties = new AlgorithmProperties();
+		algorithmProperties.strightUpProperties = new AlgorithmProperties.StraightUpProperties();
+		algorithmProperties.balanceProperties = new AlgorithmProperties.BalanceProperties();
+		algorithmProperties.clusterProperties = new AlgorithmProperties.ClusterProperties();
+		algorithmProperties.leftLeaningProperties = new AlgorithmProperties.LeftLeaningProperties();
+		algorithmProperties.rightLeaningProperties = new AlgorithmProperties.RightLeaningProperties();
+	}
 
 	void Start ()
 	{
-
 		if(useModel>models.Length-1){
 			useModel = models.Length-1;
 		}else if(useModel<0){
@@ -98,37 +160,34 @@ public class Organism : MonoBehaviour
 		AddBaseObject ();
 
 		allBranchGameObjects = new List<GameObject> ();
-		trunkLeftLeanAngle = Vector3.left * modelSize / 10;
-		trunkRightLeanAngle = Vector3.right * modelSize / 10;
-		balanceBranchDirections = new List<Vector3> ();
+		algorithmProperties.leftLeaningProperties.leanAngle = Vector3.left * modelSize / 10;
+		algorithmProperties.rightLeaningProperties.leanAngle = Vector3.right * modelSize / 10;
 
-		balanceBranchDirections.Add (new Vector3 (1, 0, 1));
-		balanceBranchDirections.Add (new Vector3 (-1, 0, 1));
-		balanceBranchDirections.Add (new Vector3 (1, 0, -1));
+
 
 		switch (growthAlgorithmPresets) {
 		case GrowthAlgorithm.StraightUp:
 			//nothing fancy, main trunk growing upward
-			AddBranch (baseObject.transform.position, Vector3.up, mainTrunkLength);
+			AddBranch (baseObject.transform.position, Vector3.up, algorithmProperties.strightUpProperties.trunkLength);
 			break;
 		case GrowthAlgorithm.RoundCluster:
 			//one branch with a random direction
-			GameObject newborn = AddBranch (baseObject.transform.position, new Vector3 (0, 0, 0), mainTrunkLength);
+			GameObject newborn = AddBranch (baseObject.transform.position, new Vector3 (0, 0, 0), algorithmProperties.clusterProperties.trunkLength);
 			newborn.GetComponent<OrganismBranch> ().isCluster = true;
 			break;
 		case GrowthAlgorithm.LeftLeaning:
 			//trunk with a left growing direction
 			//branch at early position, new branch with a slightly smaller left direction 
 			//branch at early position based on the second branch, new branch with a slight smaller left direction than the 2rd branch
-			AddBranch (baseObject.transform.position, Vector3.left * modelSize / 10, mainTrunkLength);
+			AddBranch (baseObject.transform.position, Vector3.left * modelSize / 10, algorithmProperties.leftLeaningProperties.trunkLength);
 			break;
 		case GrowthAlgorithm.RightLeaning:
 			//same as the leftleaning but with right direction
-			AddBranch (baseObject.transform.position, Vector3.right * modelSize / 10, mainTrunkLength);
+			AddBranch (baseObject.transform.position, Vector3.right * modelSize / 10, algorithmProperties.rightLeaningProperties.trunkLength);
 			break;
 		case GrowthAlgorithm.Balanced:
 			//main trunk grows upward, branch out base on the same object in trunk and each growing towards opposite direction, with similar length
-			AddBranch (baseObject.transform.position, Vector3.up, forkPosition + 2);
+			AddBranch (baseObject.transform.position, Vector3.up, algorithmProperties.balanceProperties.trunkLength);
 			break;
 		}
 	}
@@ -144,34 +203,34 @@ public class Organism : MonoBehaviour
 			break;
 		case GrowthAlgorithm.LeftLeaning:
 			if (allBranchGameObjects.Count == 1) {
-				if (allBranchGameObjects [0].GetComponent<OrganismBranch> ().objectsData.Count > leaningSecondBranchOutLocation) {
-					AddBranch (allBranchGameObjects [0].GetComponent<OrganismBranch> ().objectsData [leaningSecondBranchOutLocation - 1].myGameObject.transform.position,
-					           trunkLeftLeanAngle / leanAngleDiminishRate, mainTrunkLength - 3);
+				if (allBranchGameObjects [0].GetComponent<OrganismBranch> ().objectsData.Count > algorithmProperties.leftLeaningProperties.secondBranchOutLocation) {
+					AddBranch (allBranchGameObjects [0].GetComponent<OrganismBranch> ().objectsData [algorithmProperties.leftLeaningProperties.secondBranchOutLocation - 1].myGameObject.transform.position,
+					           algorithmProperties.leftLeaningProperties.leanAngle / algorithmProperties.leftLeaningProperties.leanAngleDiminishRate, algorithmProperties.leftLeaningProperties.secondBranchLength);
 				}
 			}
 			break;
 
 		case GrowthAlgorithm.RightLeaning:
 			if (allBranchGameObjects.Count == 1) {
-				if (allBranchGameObjects [0].GetComponent<OrganismBranch> ().objectsData.Count > leaningSecondBranchOutLocation) {
-					AddBranch (allBranchGameObjects [0].GetComponent<OrganismBranch> ().objectsData [leaningSecondBranchOutLocation - 1].myGameObject.transform.position,
-					           trunkRightLeanAngle / leanAngleDiminishRate, mainTrunkLength - 3);
+				if (allBranchGameObjects [0].GetComponent<OrganismBranch> ().objectsData.Count > algorithmProperties.rightLeaningProperties.secondBranchOutLocation) {
+					AddBranch (allBranchGameObjects [0].GetComponent<OrganismBranch> ().objectsData [algorithmProperties.rightLeaningProperties.secondBranchOutLocation - 1].myGameObject.transform.position,
+					           algorithmProperties.rightLeaningProperties.leanAngle / algorithmProperties.rightLeaningProperties.leanAngleDiminishRate, algorithmProperties.rightLeaningProperties.secondBranchLength);
 				}
 			}
 			break;
 
 		case GrowthAlgorithm.Balanced:
 			if (allBranchGameObjects.Count == 1) {
-				if (allBranchGameObjects [0].GetComponent<OrganismBranch> ().objectsData.Count > forkPosition) {
+				if (allBranchGameObjects [0].GetComponent<OrganismBranch> ().objectsData.Count > algorithmProperties.balanceProperties.forkStartLocation) {
 
-					AddBranch (allBranchGameObjects [0].GetComponent<OrganismBranch> ().objectsData [forkPosition - 1].myGameObject.transform.position,
-					           balanceBranchDirections [0] / leanAngleDiminishRate, mainTrunkLength);
+					AddBranch (allBranchGameObjects [0].GetComponent<OrganismBranch> ().objectsData [algorithmProperties.balanceProperties.forkStartLocation - 1].myGameObject.transform.position,
+					           algorithmProperties.balanceProperties.b1Direction / algorithmProperties.balanceProperties.leanAngleDiminishRate, algorithmProperties.balanceProperties.branchLength);
 
-					AddBranch (allBranchGameObjects [0].GetComponent<OrganismBranch> ().objectsData [forkPosition - 1].myGameObject.transform.position,
-					           balanceBranchDirections [1] / leanAngleDiminishRate, mainTrunkLength);
+					AddBranch (allBranchGameObjects [0].GetComponent<OrganismBranch> ().objectsData [algorithmProperties.balanceProperties.forkStartLocation - 1].myGameObject.transform.position,
+					           algorithmProperties.balanceProperties.b2Direction / algorithmProperties.balanceProperties.leanAngleDiminishRate, algorithmProperties.balanceProperties.branchLength);
 
-					AddBranch (allBranchGameObjects [0].GetComponent<OrganismBranch> ().objectsData [forkPosition - 1].myGameObject.transform.position,
-					           balanceBranchDirections [2] / leanAngleDiminishRate, mainTrunkLength);
+					AddBranch (allBranchGameObjects [0].GetComponent<OrganismBranch> ().objectsData [algorithmProperties.balanceProperties.forkStartLocation - 1].myGameObject.transform.position,
+					           algorithmProperties.balanceProperties.b3Direction / algorithmProperties.balanceProperties.leanAngleDiminishRate, algorithmProperties.balanceProperties.branchLength);
 				}
 			}
 			break;
