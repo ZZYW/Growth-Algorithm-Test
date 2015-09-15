@@ -34,6 +34,8 @@ public class OrganismObject : MonoBehaviour
 		growingVelocity = new Vector3 (growingSpeed, growingSpeed, growingSpeed);
 		gameObject.transform.localScale = startScale;
 		gameObject.transform.rotation = Random.rotation;
+
+
 		float randomSize = Random.Range (0.7f, 1.4f) * myOrganismClass.modelSizeCorrection;
 		targetScale = new Vector3 (randomSize, randomSize, randomSize);
 	}
@@ -48,7 +50,6 @@ public class OrganismObject : MonoBehaviour
 				gravityChanged = true;
 			}
 		}
-
 
 		if (gameObject.transform.localScale.magnitude < targetScale.magnitude && !growingCompleted) {
 			Vector3 temp = gameObject.transform.localScale;

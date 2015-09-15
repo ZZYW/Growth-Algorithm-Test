@@ -14,28 +14,23 @@ public enum GrowthAlgorithm
 public class Organism : MonoBehaviour
 {
 
-	public enum ModelNames
-	{
-		Corgi,
-		OfficeChair,
-		GiantBone
-	}
-
-	public enum ModelSourceType
-	{
-		Name,
-		Gameobject
-	}
-	
 	public GameObject ground;
-	public ModelNames initialModel;
+//	public ModelNames initialModel;
+
+
 	public GrowthAlgorithm growthAlgorithmPresets;
+
+	public GameObject[] models;
+	public int useModel;
+	public bool randomModel;
+
+
 	[Range(3.5f,5.5f)]
 	public float
 		modelBoundSize = 5.0f;
 	[HideInInspector]
 	public float
-		objectDropingDistance = 0.3f;
+		objectDropingDistance = 0.8f;
 	[HideInInspector]
 	public GameObject
 		baseObject;
@@ -46,14 +41,12 @@ public class Organism : MonoBehaviour
 	public GameObject
 		modelGameObject;
 	[HideInInspector]
-	public ModelSourceType
-		modelSourceType;
-	[HideInInspector]
 	public float
 		modelSizeCorrection;
-	
-	//organism shape
 
+	
+
+	//organism shape
 	[Range(1,100)]
 	public int
 		mainTrunkLength = 4;
@@ -81,7 +74,7 @@ public class Organism : MonoBehaviour
 		newBornScale = 0.2f;
 	[Range(1.0f,20.0f)]
 	public float
-		minimalGeneratingTimeGap = 1.0f;
+		generatingTimeGap = 1.0f;
 	[HideInInspector]
 	public int
 		objectSum;
@@ -94,6 +87,13 @@ public class Organism : MonoBehaviour
 
 	void Start ()
 	{
+
+		if(useModel>models.Length-1){
+			useModel = models.Length-1;
+		}else if(useModel<0){
+			useModel = 0;
+		}
+
 		CheckModelList ();
 		AddBaseObject ();
 
@@ -109,7 +109,7 @@ public class Organism : MonoBehaviour
 		switch (growthAlgorithmPresets) {
 		case GrowthAlgorithm.StraightUp:
 			//nothing fancy, main trunk growing upward
-			GameObject newbranch = AddBranch (baseObject.transform.position, Vector3.up, mainTrunkLength);
+			AddBranch (baseObject.transform.position, Vector3.up, mainTrunkLength);
 			break;
 		case GrowthAlgorithm.RoundCluster:
 			//one branch with a random direction
@@ -136,8 +136,6 @@ public class Organism : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		//Not allow to change model in running time manually.
-//		updateModel ();
 
 		switch (growthAlgorithmPresets) {
 		case GrowthAlgorithm.StraightUp:
@@ -215,26 +213,18 @@ public class Organism : MonoBehaviour
 
 	private void CheckModelList ()
 	{
-		GameObject temp;
-		switch (initialModel) {
-		case ModelNames.Corgi:
-			temp = (GameObject)Resources.Load ("corgi_withcollider");
-			ChangeModel (temp);
-			break;
-		case ModelNames.OfficeChair:
-			temp = (GameObject)Resources.Load ("officechair_collider");
-			ChangeModel (temp);
-			break;
-		case ModelNames.GiantBone:
-			temp = (GameObject)Resources.Load ("giantbone_withcollider");
-			ChangeModel (temp);
-			break;
+		if(!randomModel){
+			ChangeModel(models[useModel]);
+		}else{
+			int randomIndex = Mathf.FloorToInt(Random.Range(0,models.Length));
+			ChangeModel(models[randomIndex]);
 		}
 	}
 
 	private float ModelSize ()
 	{
 		float size = modelGameObject.GetComponent<MeshRenderer> ().bounds.size.magnitude;
+	
 		modelSizeCorrection = modelBoundSize / size;
 		return size;
 	}

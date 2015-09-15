@@ -48,7 +48,7 @@ public class OrganismBranch : MonoBehaviour
 		parentGameObject = gameObject.transform.parent.gameObject;
 		myOrganismClass = parentGameObject.GetComponent<Organism> ();
 		objectsData = new List<ObjectData> ();
-		growingTimeGap = myOrganismClass.minimalGeneratingTimeGap;
+		growingTimeGap = myOrganismClass.generatingTimeGap;
 
 		StartCoroutine ("WaitAndGrow");
 	}

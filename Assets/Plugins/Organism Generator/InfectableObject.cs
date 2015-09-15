@@ -47,7 +47,7 @@ public class InfectableObject : MonoBehaviour {
 
 			switch (newGrowthAlgo) {
 			case GrowthAlgorithm.StraightUp:
-				GameObject newbranch = organismClass.AddBranch (gameObject.transform.position, Vector3.up, generatedBranchLength);			
+				organismClass.AddBranch (gameObject.transform.position, Vector3.up, generatedBranchLength);			
 				break;
 			case GrowthAlgorithm.RoundCluster:
 				GameObject newborn = organismClass.AddBranch (gameObject.transform.position, new Vector3 (0, 0, 0), generatedBranchLength);
