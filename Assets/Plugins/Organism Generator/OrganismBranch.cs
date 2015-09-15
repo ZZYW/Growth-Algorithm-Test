@@ -59,7 +59,7 @@ public class OrganismBranch : MonoBehaviour
 	
 	}
 
-	public void stopGrow ()
+	public void StopGrow ()
 	{
 		StopCoroutine ("WaitAndGrow");
 	}
@@ -68,11 +68,11 @@ public class OrganismBranch : MonoBehaviour
 	{
 		while (objectsData.Count<branchLength-1) {
 			if (objectsData.Count == 0) {
-				addObject ();
+				AddObject ();
 			} else {
 				if (objectsData [objectsData.Count - 1].myGameObject != null) {
 					if (objectsData [objectsData.Count - 1].myGameObject.GetComponent<OrganismObject> ().growingCompleted) {
-						addObject ();
+						AddObject ();
 					}
 				}else{
 					objectsData.RemoveAt(objectsData.Count - 1);
@@ -82,7 +82,7 @@ public class OrganismBranch : MonoBehaviour
 		}
 	}
 	
-	public void addObject ()
+	public void AddObject ()
 	{
 		Organism myOrganismClass = parentGameObject.GetComponent<Organism> ();
 
@@ -106,10 +106,27 @@ public class OrganismBranch : MonoBehaviour
 			newPosition = previousObjectPos + Vector3.up * myOrganismClass.objectDropingDistance + direction * correction;
 		}
 
-		GameObject newObject = (GameObject)Instantiate (Resources.Load (myOrganismClass.modelName), newPosition, Quaternion.identity);
+		GameObject newObject = (GameObject)Instantiate (myOrganismClass.modelGameObject, newPosition, Quaternion.identity);
+		if(newObject.GetComponent<InfectableObject>()){
+			Destroy(newObject.GetComponent<InfectableObject>());
+//			newObject.transform.position = 
+		}
 		modelBoundSize = newObject.GetComponent<MeshRenderer> ().bounds.extents.magnitude;
-		StickyStickStuckPackage.StickyStickStuck newObjectSSS = newObject.AddComponent<StickyStickStuckPackage.StickyStickStuck> ();
-		Rigidbody newObjectRigidBody = newObject.GetComponent<Rigidbody> ();
+
+		StickyStickStuckPackage.StickyStickStuck newObjectSSS;
+		if(newObject.GetComponent<StickyStickStuckPackage.StickyStickStuck>()!=null){
+			newObjectSSS = newObject.GetComponent<StickyStickStuckPackage.StickyStickStuck> ();
+		}else{
+			newObjectSSS = newObject.AddComponent<StickyStickStuckPackage.StickyStickStuck> ();
+		}
+
+		Rigidbody newObjectRigidBody;
+		if(newObject.GetComponent<Rigidbody>()!=null){
+			newObjectRigidBody = newObject.GetComponent<Rigidbody> ();
+		}else{
+			newObjectRigidBody = newObject.AddComponent<Rigidbody> ();
+		}
+
 		newObject.GetComponent<MeshRenderer> ().enabled = false;
 		newObjectRigidBody.mass = 0.1f;
 		newObjectRigidBody.drag = 0.5f;
@@ -125,16 +142,17 @@ public class OrganismBranch : MonoBehaviour
 	}
 
 
-	public void breakBranch(){
+	public void BreakBranch(){
 		foreach(ObjectData o in objectsData){
 			StopCoroutine ("WaitAndGrow");
-			o.myGameObject.GetComponent<StickyStickStuckPackage.StickyStickStuck>().enable = false;
+			GameObject obj = o.myGameObject;
+			obj.GetComponent<StickyStickStuckPackage.StickyStickStuck>().enable = false;
 			Destroy(o.myGameObject.GetComponent<Joint>());
-			o.myGameObject.GetComponent<Rigidbody>().useGravity = true;
-			o.myGameObject.tag = "Untagged";
-			o.myGameObject.transform.parent = parentGameObject.transform.FindChild("BreakOffObjects").transform;
+			obj.GetComponent<Rigidbody>().useGravity = true;
+			obj.tag = "Untagged";
+			obj.transform.parent = parentGameObject.transform.FindChild("BreakOffObjects").transform;
 			gameObject.name = "Broken Branch";
-			Destroy(o.myGameObject.GetComponent<OrganismObject>());
+			Destroy(obj.GetComponent<OrganismObject>());
 		}
 		objectsData.Clear();
 	}

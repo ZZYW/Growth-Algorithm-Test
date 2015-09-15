@@ -11,7 +11,7 @@ public class BranchEditor : Editor {
 
 		if(GUILayout.Button("Break This Branch"))
 		{
-			mytarget.breakBranch();
+			mytarget.BreakBranch();
 		}
 	}
 }

@@ -9,10 +9,10 @@ public class OrganismObjectStabilizer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine("cleanUpMomentum");
+		StartCoroutine("CleanUpMomentum");
 	}
 
-	IEnumerator cleanUpMomentum ()
+	IEnumerator CleanUpMomentum ()
 	{
 		while(true){
 			GameObject[] allOrganismObjects = GameObject.FindGameObjectsWithTag("organismObject");

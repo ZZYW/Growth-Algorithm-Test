@@ -9,7 +9,6 @@ public class InfectableObject : MonoBehaviour {
 
 	public GrowthAlgorithm newGrowthAlgo;
 
-	private string myModelName;
 	private bool rooted;
 	private GrowthAlgorithm originalGrowthAlgo;
 	private GameObject organismGameObject;
@@ -21,7 +20,6 @@ public class InfectableObject : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		myModelName = gameObject.name;
 		newGrowthAlgo = GetRandomEnum<GrowthAlgorithm>();
 	}
 
@@ -29,40 +27,40 @@ public class InfectableObject : MonoBehaviour {
 	void Update () {
 
 	}
-
-
+	
 	void OnCollisionEnter (Collision c)
 	{
 		if(c.gameObject.GetComponent<OrganismObject>() != null && !rooted){
 
+			//put this object under Organism
 			gameObject.transform.parent = c.gameObject.transform.parent.transform.parent;
+
 			organismGameObject = c.gameObject.transform.parent.transform.parent.gameObject;
-			organismGameObject.GetComponent<Organism>().changeModel(myModelName);
 
 			foreach(GameObject b in organismGameObject.GetComponent<Organism>().allBranchGameObjects){
 				b.GetComponent<OrganismBranch>().StopCoroutine("WaitAndGrow");
 			}
 
 			Organism organismClass = organismGameObject.GetComponent<Organism>();
-			organismClass.changeModel(myModelName);
+			organismClass.ChangeModel(gameObject);
 
 
 			switch (newGrowthAlgo) {
 			case GrowthAlgorithm.StraightUp:
-				GameObject newbranch = organismClass.addBranch (gameObject.transform.position, Vector3.up, generatedBranchLength);			
+				GameObject newbranch = organismClass.AddBranch (gameObject.transform.position, Vector3.up, generatedBranchLength);			
 				break;
 			case GrowthAlgorithm.RoundCluster:
-				GameObject newborn = organismClass.addBranch (gameObject.transform.position, new Vector3 (0, 0, 0), generatedBranchLength);
+				GameObject newborn = organismClass.AddBranch (gameObject.transform.position, new Vector3 (0, 0, 0), generatedBranchLength);
 				newborn.GetComponent<OrganismBranch> ().isCluster = true;
 				break;
 			case GrowthAlgorithm.LeftLeaning:
-				organismClass.addBranch (gameObject.transform.position, Vector3.left * 	organismClass.modelSize / 10, generatedBranchLength);
+				organismClass.AddBranch (gameObject.transform.position, Vector3.left * 	organismClass.modelSize / 10, generatedBranchLength);
 				break;
 			case GrowthAlgorithm.RightLeaning:
-				organismClass.addBranch (gameObject.transform.position, Vector3.right * organismClass.modelSize / 10, generatedBranchLength);
+				organismClass.AddBranch (gameObject.transform.position, Vector3.right * organismClass.modelSize / 10, generatedBranchLength);
 				break;
 			case GrowthAlgorithm.Balanced:
-				organismClass.addBranch (gameObject.transform.position, Vector3.up, generatedBranchLength);
+				organismClass.AddBranch (gameObject.transform.position, Vector3.up, generatedBranchLength);
 				break;
 			}
 			rooted = true;

@@ -19,9 +19,6 @@ public class OrganismObject : MonoBehaviour
 	Vector3 targetScale;
 	bool gravityChanged = false;
 
-
-
-
 	
 	// Use this for initialization
 	void Start ()
