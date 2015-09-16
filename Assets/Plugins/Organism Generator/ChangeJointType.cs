@@ -43,7 +43,7 @@ public class ChangeJointType : MonoBehaviour
 			
 			
 				SoftJointLimitSpring limitspring = conjoint.linearLimitSpring;
-				limitspring.spring = 20.0f;
+				limitspring.spring = 500.0f;
 				conjoint.linearLimitSpring = limitspring;
 
 

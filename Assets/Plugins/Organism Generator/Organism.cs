@@ -66,11 +66,11 @@ public class Organism : MonoBehaviour
 			public int trunkLength = 7;
 			public int forkStartLocation = 3; //Notice:  has to be smaller than trunkLength
 			[HideInInspector]
-			public Vector3 b1Direction = new Vector3(1,0,1);
+			public Vector3 b1Direction = new Vector3(0.6f,0.5f,0.6f);
 			[HideInInspector]
-			public Vector3 b2Direction = new Vector3(-1,0,1);
+			public Vector3 b2Direction = new Vector3(-0.6f,0.5f,0.6f);
 			[HideInInspector]
-			public Vector3 b3Direction = new Vector3(1,0,-1);
+			public Vector3 b3Direction = new Vector3(0.6f,0.5f,-0.6f);
 			[HideInInspector]
 			public float leanAngleDiminishRate = 1.4f;
 			public int branchLength = 15;
