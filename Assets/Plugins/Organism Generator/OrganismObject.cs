@@ -42,10 +42,15 @@ public class OrganismObject : MonoBehaviour
 	
 	void Update ()
 	{
+
 		//When it has already sticked to something.
 		if (gameObject.GetComponent<Joint> () != null) {
+
+//			gameObject.GetComponent<StickyStickStuckPackage.StickyStickStuck>().infectionProperties.affectInfected = false;
+
 			gameObject.GetComponent<MeshRenderer> ().enabled = true;
-			if(!gravityChanged){
+
+			if (!gravityChanged) {
 				gameObject.GetComponent<Rigidbody> ().useGravity = false;
 				gravityChanged = true;
 			}
@@ -61,6 +66,13 @@ public class OrganismObject : MonoBehaviour
 			gameObject.GetComponent<StickyStickStuckPackage.StickyStickStuck> ().infectionProperties.affectInfected = false;
 		}
 
+		if (gameObject.GetComponent<Joint> () != null) {
+			if (gameObject.GetComponent<Joint> ().connectedBody == null) {
+				myOrganismBranchClass.objectsData.RemoveAt (myOrganismBranchClass.objectsData.Count - 1);
+				Destroy (gameObject);
+			}
+		}
+
 	}
 
 	void OnCollisionEnter (Collision col)
@@ -72,7 +84,7 @@ public class OrganismObject : MonoBehaviour
 				myOrganismBranchClass.objectMissedNumber++;
 				Destroy (gameObject);
 			}
-		}else{
+		} else {
 			myOrganismBranchClass.objectMissedNumber = 0;
 		}
 	}

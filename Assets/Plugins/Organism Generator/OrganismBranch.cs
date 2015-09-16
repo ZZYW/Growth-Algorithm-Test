@@ -107,6 +107,8 @@ public class OrganismBranch : MonoBehaviour
 		}
 
 		GameObject newObject = (GameObject)Instantiate (myOrganismClass.modelGameObject, newPosition, Quaternion.identity);
+		ChangeJointType changeJointTypeClass =  newObject.AddComponent<ChangeJointType>();
+		changeJointTypeClass.myOrganismClass = myOrganismClass;
 		if(newObject.GetComponent<InfectableObject>()){
 			Destroy(newObject.GetComponent<InfectableObject>());
 //			newObject.transform.position = 
@@ -133,6 +135,7 @@ public class OrganismBranch : MonoBehaviour
 		newObjectRigidBody.angularDrag = 0f;
 		newObjectSSS.stickProperties.stickNonRigidbodys = false;
 		newObjectSSS.infectionProperties.affectInfected = true;
+		newObjectSSS.stickProperties.maxStuck = 2;
 		OrganismObject myOrgan = newObject.AddComponent<OrganismObject> ();
 		myOrgan.myIndex = objectsData.Count;
 		newObject.name = "Object" + objectsData.Count;
@@ -147,10 +150,14 @@ public class OrganismBranch : MonoBehaviour
 			StopCoroutine ("WaitAndGrow");
 			GameObject obj = o.myGameObject;
 			obj.GetComponent<StickyStickStuckPackage.StickyStickStuck>().enable = false;
-			Destroy(o.myGameObject.GetComponent<Joint>());
+			Joint[] alljoints = o.myGameObject.GetComponents<Joint>();
+			foreach(Joint jo in alljoints){
+				Destroy(jo);
+			}
+//			Destroy(o.myGameObject.GetComponent<Joint>());
 			obj.GetComponent<Rigidbody>().useGravity = true;
 			obj.tag = "Untagged";
-			obj.transform.parent = parentGameObject.transform.FindChild("BreakOffObjects").transform;
+			obj.transform.parent = myOrganismClass.brokenOffContainer.transform;
 			gameObject.name = "Broken Branch";
 			Destroy(obj.GetComponent<OrganismObject>());
 		}

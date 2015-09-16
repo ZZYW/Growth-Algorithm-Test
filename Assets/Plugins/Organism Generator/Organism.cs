@@ -15,14 +15,13 @@ public class Organism : MonoBehaviour
 {
 
 	public GameObject ground;
-//	public ModelNames initialModel;
 
-
+	public GameObject brokenOffContainer;
 	public GrowthAlgorithm growthAlgorithmPresets;
 
 	public GameObject[] models;
 	public int useModel;
-	public bool randomModel;
+	public bool randomSelectModel;
 
 
 	[Range(3.5f,5.5f)]
@@ -30,7 +29,7 @@ public class Organism : MonoBehaviour
 		modelBoundSize = 5.0f;
 	[HideInInspector]
 	public float
-		objectDropingDistance = 0.8f;
+		objectDropingDistance = 1.0f;
 	[HideInInspector]
 	public GameObject
 		baseObject;
@@ -138,6 +137,16 @@ public class Organism : MonoBehaviour
 	[HideInInspector]
 	public string
 		objectTagName = "organismObject";
+
+
+	public ConfigurableJointMotion xmotion= ConfigurableJointMotion.Limited;
+	public ConfigurableJointMotion ymotion = ConfigurableJointMotion.Limited;
+	public ConfigurableJointMotion zmotion = ConfigurableJointMotion.Limited;
+	public ConfigurableJointMotion xmotionAngular = ConfigurableJointMotion.Locked;
+	public ConfigurableJointMotion ymotionAngular = ConfigurableJointMotion.Locked;
+	public ConfigurableJointMotion zmotionAngular = ConfigurableJointMotion.Locked;
+	public float jointLimit = 0.6f;
+
 	
 	void Awake(){
 		algorithmProperties = new AlgorithmProperties();
@@ -272,7 +281,7 @@ public class Organism : MonoBehaviour
 
 	private void CheckModelList ()
 	{
-		if(!randomModel){
+		if(!randomSelectModel){
 			ChangeModel(models[useModel]);
 		}else{
 			int randomIndex = Mathf.FloorToInt(Random.Range(0,models.Length));
