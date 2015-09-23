@@ -57,7 +57,7 @@ public class Organism : MonoBehaviour
 	public class AlgorithmProperties {
 		[System.Serializable]
 		public class StraightUpProperties {
-			public int trunkLength = 24;
+			public int trunkLength;
 		}
 		public StraightUpProperties strightUpProperties; 
 
@@ -66,23 +66,26 @@ public class Organism : MonoBehaviour
 			public int trunkLength = 7;
 			public int forkStartLocation = 3; //Notice:  has to be smaller than trunkLength
 			[HideInInspector]
-			public Vector3 b1Direction = new Vector3(0.6f,0.5f,0.6f);
+			public Vector3 b1Direction = new Vector3(0.3f,0.3f,0.3f);
 			[HideInInspector]
-			public Vector3 b2Direction = new Vector3(-0.6f,0.5f,0.6f);
+			public Vector3 b2Direction = new Vector3(-0.3f,0.3f,0.3f);
 			[HideInInspector]
-			public Vector3 b3Direction = new Vector3(0.6f,0.5f,-0.6f);
+			public Vector3 b3Direction = new Vector3(0.3f,0.3f,-0.3f);
 			[HideInInspector]
 			public float leanAngleDiminishRate = 1.4f;
-			public int branchLength = 15;
+			[Range(10,90)]
+			public int branchLength;
 		}
 		public BalanceProperties balanceProperties;
 		[System.Serializable]
 		public class LeftLeaningProperties {
-			public int trunkLength = 30;
+			[Range(10,90)]
+			public int trunkLength;
 			[HideInInspector]
 			public float leanAngleDiminishRate = 1.4f;
 			public int secondBranchOutLocation = 4;
-			public int secondBranchLength = 20;
+			[Range(10,90)]
+			public int secondBranchLength;
 			[HideInInspector]
 			public Vector3 leanAngle;
 		}
@@ -90,11 +93,13 @@ public class Organism : MonoBehaviour
 
 		[System.Serializable]
 		public class RightLeaningProperties{
-			public int trunkLength = 30;
+			[Range(10,90)]
+			public int trunkLength;
 			[HideInInspector]
 			public float leanAngleDiminishRate = 1.4f;
 			public int secondBranchOutLocation = 4;
-			public int secondBranchLength = 20;
+			[Range(10,90)]
+			public int secondBranchLength;
 			[HideInInspector]
 			public Vector3 leanAngle;
 		}
@@ -149,16 +154,14 @@ public class Organism : MonoBehaviour
 
 	
 	void Awake(){
-		algorithmProperties = new AlgorithmProperties();
-		algorithmProperties.strightUpProperties = new AlgorithmProperties.StraightUpProperties();
-		algorithmProperties.balanceProperties = new AlgorithmProperties.BalanceProperties();
-		algorithmProperties.clusterProperties = new AlgorithmProperties.ClusterProperties();
-		algorithmProperties.leftLeaningProperties = new AlgorithmProperties.LeftLeaningProperties();
-		algorithmProperties.rightLeaningProperties = new AlgorithmProperties.RightLeaningProperties();
+
 	}
 
 	void Start ()
 	{
+
+
+
 		if(useModel>models.Length-1){
 			useModel = models.Length-1;
 		}else if(useModel<0){

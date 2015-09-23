@@ -46,9 +46,28 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Editor\BranchEditor.cs" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\Legacy Shaders\Unlit_Cutout.shader" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\Legacy Shaders\Opaque_Specular.shader" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\Cutout.shader" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\Legacy Shaders\Unlit_Transparent.shader" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\Transparent.shader" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\Legacy Shaders\Cutout_Specular.shader" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\V_MM_UnityStandardCore.cginc" />
      <None Include="Assets\Plugins\StickyStickStuck Package\ReadMe.txt" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\Legacy Shaders\Unlit_Opaque.shader" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\StandardSpecular.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\Standard.shader" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\Legacy Shaders\Cutout.shader" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\V_MM_UnityStandardInput.cginc" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\Legacy Shaders\Opaque.shader" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\UV.shader" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\Legacy Shaders\Transparent_Specular.shader" />
      <None Include="Assets\Plugins\donotdelete.txt" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Example Scenes\Files\Unlit_Shadows.shader" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\Diffuse.shader" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Shaders\Legacy Shaders\Transparent.shader" />
+     <None Include="Assets\VacuumShaders\Mesh Materializer\Scripts\ReadMe.txt" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>/Users/yang/Documents/IAN CHEUNG PROJECT/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
@@ -94,6 +113,18 @@
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="VacuumShaders.MeshMaterializerVC">
+ <HintPath>/Users/yang/Documents/IAN CHEUNG PROJECT/Assets/VacuumShaders/Mesh Materializer/Editor/VacuumShaders.MeshMaterializerVC.dll</HintPath>
+ </Reference>
+ <Reference Include="VacuumShaders">
+ <HintPath>/Users/yang/Documents/IAN CHEUNG PROJECT/Assets/VacuumShaders/Editor/VacuumShaders.dll</HintPath>
+ </Reference>
+ <Reference Include="VacuumShaders.MeshMaterializer_Editor">
+ <HintPath>/Users/yang/Documents/IAN CHEUNG PROJECT/Assets/VacuumShaders/Mesh Materializer/Editor/VacuumShaders.MeshMaterializer_Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="VacuumShaders.MeshMaterializer">
+ <HintPath>/Users/yang/Documents/IAN CHEUNG PROJECT/Assets/VacuumShaders/Mesh Materializer/Scripts/VacuumShaders.MeshMaterializer.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
@@ -101,6 +132,8 @@
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{2CD5FE32-8DBE-A350-5E6C-DBB440ED1C75}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{D11084E1-0141-5F5D-9F85-007E609350B2}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,3 +1,363 @@
 Base path: /Applications/Unity/Unity.app/Contents
-Pipe name: \\.\pipe\UnityShaderCompiler-64bit-1-1923752704
+Pipe name: \\.\pipe\UnityShaderCompiler-64bit-1-2015585024
 Cmd: getPlatforms
+Cmd: preprocess
+  insize=4427 outsize=1410 ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=3321 outsize=265 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=3321 outsize=6 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: preprocess
+  insize=3042 outsize=2905 ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=410801 outsize=2241 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=410801 outsize=6 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=248003 outsize=1673 kw=POINT _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=248003 outsize=6 kw=POINT _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=220158 outsize=1162 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=220158 outsize=6 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=365429 outsize=2541 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=365429 outsize=6 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=362401 outsize=2475 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=362401 outsize=6 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=209201 outsize=2200 kw=SHADOWS_DEPTH _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=209201 outsize=6 kw=SHADOWS_DEPTH _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=229638 outsize=2282 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=229638 outsize=6 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: preprocess
+  insize=3250 outsize=2335 ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=411900 outsize=2399 kw=DIRECTIONAL LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=411900 outsize=6 kw=DIRECTIONAL LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=247993 outsize=1929 kw=POINT _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=247993 outsize=6 kw=POINT _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=228044 outsize=2173 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=228044 outsize=6 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: preprocess
+  insize=3115 outsize=2892 ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=418049 outsize=2533 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=418049 outsize=6 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=253859 outsize=1977 kw=POINT _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=253859 outsize=6 kw=POINT _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=212382 outsize=1011 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=212382 outsize=6 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=366677 outsize=2571 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=366677 outsize=6 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=370081 outsize=2562 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=370081 outsize=6 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=201425 outsize=2016 kw=SHADOWS_DEPTH _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=201425 outsize=6 kw=SHADOWS_DEPTH _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=229446 outsize=2173 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=229446 outsize=6 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: preprocess
+  insize=2157 outsize=2039 ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=50589 outsize=8643 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=50589 outsize=6 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=30576 outsize=4044 kw=POINT SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=30576 outsize=6 kw=POINT SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=44504 outsize=3157 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=44504 outsize=6 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=25236 outsize=2516 kw=SHADOWS_DEPTH _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=25236 outsize=6 kw=SHADOWS_DEPTH _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=26713 outsize=2590 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=26713 outsize=6 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: preprocess
+  insize=3058 outsize=2214 ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=402252 outsize=2046 kw=DIRECTIONAL LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=402252 outsize=6 kw=DIRECTIONAL LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=240361 outsize=1564 kw=POINT _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=240361 outsize=6 kw=POINT _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=224540 outsize=2173 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=224540 outsize=6 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: preprocess
+  insize=2032 outsize=1897 ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=50301 outsize=8618 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=50301 outsize=6 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=30366 outsize=3985 kw=POINT SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=30366 outsize=6 kw=POINT SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=44270 outsize=3134 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=44270 outsize=6 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=23778 outsize=2072 kw=SHADOWS_DEPTH _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=23778 outsize=6 kw=SHADOWS_DEPTH _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=26263 outsize=2483 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=26263 outsize=6 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: preprocess
+  insize=1088 outsize=211 ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=1174 outsize=265 kw=V_MM_UVBAKER_COLORSPACE_NONE pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=1174 outsize=6 kw=V_MM_UVBAKER_COLORSPACE_NONE pd= ok=1
+Cmd: preprocess
+  insize=4637 outsize=1625 ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=3315 outsize=265 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=3315 outsize=6 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: preprocess
+  insize=9239 outsize=4972 ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=1066 outsize=9581 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=1066 outsize=6 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=1025 outsize=6081 kw=POINT SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=1025 outsize=6 kw=POINT SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=751 outsize=1893 kw=SHADOWS_DEPTH pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=751 outsize=6 kw=SHADOWS_DEPTH pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=1237 outsize=8288 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=1237 outsize=6 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=526 outsize=2846 kw= pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=526 outsize=6 kw= pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=1008 outsize=4664 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=1008 outsize=6 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=957 outsize=3525 kw=POINT SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=957 outsize=6 kw=POINT SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=600 outsize=1893 kw=SHADOWS_DEPTH pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=600 outsize=6 kw=SHADOWS_DEPTH pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=526 outsize=2846 kw= pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=526 outsize=6 kw= pd= ok=1
+Cmd: preprocess
+  insize=2929 outsize=2770 ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=408785 outsize=2180 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=408785 outsize=6 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=246611 outsize=1612 kw=POINT _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=246611 outsize=6 kw=POINT _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=209262 outsize=978 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=209262 outsize=6 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=363413 outsize=2480 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=363413 outsize=6 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=360817 outsize=2450 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=360817 outsize=6 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=198305 outsize=2016 kw=SHADOWS_DEPTH _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=198305 outsize=6 kw=SHADOWS_DEPTH _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=226326 outsize=2173 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=226326 outsize=6 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: preprocess
+  insize=2187 outsize=1671 ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=49679 outsize=8535 kw=DIRECTIONAL LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=49679 outsize=6 kw=DIRECTIONAL LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=29775 outsize=4028 kw=POINT SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=29775 outsize=6 kw=POINT SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=26230 outsize=2483 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=26230 outsize=6 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: preprocess
+  insize=3060 outsize=1144 ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=1235 outsize=439 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=1235 outsize=6 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=813 outsize=610 kw=SHADOWS_DEPTH pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=813 outsize=6 kw=SHADOWS_DEPTH pd= ok=1
+Cmd: preprocess
+  insize=3233 outsize=3029 ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=420305 outsize=2594 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=420305 outsize=6 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=255491 outsize=2038 kw=POINT _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=255491 outsize=6 kw=POINT _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=223518 outsize=1195 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=223518 outsize=6 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=368933 outsize=2632 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=368933 outsize=6 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=371905 outsize=2587 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=371905 outsize=6 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=212561 outsize=2200 kw=SHADOWS_DEPTH _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=212561 outsize=6 kw=SHADOWS_DEPTH _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=232998 outsize=2282 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=232998 outsize=6 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: preprocess
+  insize=9246 outsize=4971 ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=1071 outsize=9723 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=1071 outsize=6 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=1029 outsize=6277 kw=POINT SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=1029 outsize=6 kw=POINT SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=751 outsize=1893 kw=SHADOWS_DEPTH pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=751 outsize=6 kw=SHADOWS_DEPTH pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=1241 outsize=8386 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=1241 outsize=6 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=530 outsize=3063 kw= pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=530 outsize=6 kw= pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=991 outsize=4854 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=991 outsize=6 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=961 outsize=3726 kw=POINT SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=961 outsize=6 kw=POINT SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=600 outsize=1893 kw=SHADOWS_DEPTH pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=600 outsize=6 kw=SHADOWS_DEPTH pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=530 outsize=3063 kw= pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=530 outsize=6 kw= pd= ok=1
+Cmd: preprocess
+  insize=4603 outsize=1524 ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=3383 outsize=373 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=3383 outsize=6 kw=_COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=3321 outsize=525 kw=_COLORSPACE_ORIGINAL V_MM_TEXTURE_AND_COLOR_ON pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=3321 outsize=6 kw=_COLORSPACE_ORIGINAL V_MM_TEXTURE_AND_COLOR_ON pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=1029 outsize=5923 kw=DIRECTIONAL SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=1029 outsize=6 kw=DIRECTIONAL SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=797 outsize=2249 kw=SHADOWS_DEPTH pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=797 outsize=6 kw=SHADOWS_DEPTH pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=6947 outsize=2359 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=6947 outsize=6 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=3705 outsize=1548 kw=DIRECTIONAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=3705 outsize=6 kw=DIRECTIONAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=198305 outsize=2016 kw=SHADOWS_DEPTH _COLORSPACE_ORIGINAL V_MM_EMISSION_ON pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=198305 outsize=6 kw=SHADOWS_DEPTH _COLORSPACE_ORIGINAL V_MM_EMISSION_ON pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=408785 outsize=2255 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL V_MM_EMISSION_ON pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=408785 outsize=6 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF _COLORSPACE_ORIGINAL V_MM_EMISSION_ON pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=246611 outsize=1281 kw=DIRECTIONAL _COLORSPACE_ORIGINAL V_MM_EMISSION_ON pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=246611 outsize=6 kw=DIRECTIONAL _COLORSPACE_ORIGINAL V_MM_EMISSION_ON pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=1025 outsize=5727 kw=DIRECTIONAL SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=1025 outsize=6 kw=DIRECTIONAL SHADOWS_OFF _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=1066 outsize=10379 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF FOG_EXP2 _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=1066 outsize=6 kw=DIRECTIONAL SHADOWS_SCREEN LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF FOG_EXP2 _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=0 insize=1066 outsize=9911 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF FOG_EXP2 _COLORSPACE_ORIGINAL pd= ok=1
+Cmd: compileSnippet
+  api=0 type=1 insize=1066 outsize=6 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF FOG_EXP2 _COLORSPACE_ORIGINAL pd= ok=1
